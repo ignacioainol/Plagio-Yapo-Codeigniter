@@ -1,0 +1,68 @@
+//Colors
+$white: #FFFFFF;
+$black: #000000;
+$greenlight: #76ff03;
+
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+
+#mainContainer{
+	margin-top:2em;
+
+	h1#mainTitle{
+		font-family: 'Press Start 2P', cursive;
+		font-size: 1.7em;
+	}
+
+	.table{
+		margin-top: 2em;
+		td{
+			padding: .4em;
+			transition: all .6s linear;
+		}
+		td:hover{
+			background: $greenlight;
+			cursor: pointer;
+		}
+	}
+}
+
+.modal-body{
+	padding: 3em;
+	h5,.btnEnter{
+		text-align: center !important;
+		margin-bottom: 1em;
+	}
+	.btnLogin{
+		text-align: center;
+	}
+	.close{
+		position: absolute;
+		right: 13px;
+		top: 13px;
+	}
+	.btnEnter{
+		width: 80%;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+}
+.mainRegistro{
+	.titleRegistro{
+		padding-left: 3em;
+		padding-top: 2.2em;
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+		h1{
+			font-size: 1.4em;
+		}
+		h4{
+			font-size: 0.8em;
+
+		}
+	}
+	.sexOption{
+		margin-bottom: 5em;
+	}
+}
