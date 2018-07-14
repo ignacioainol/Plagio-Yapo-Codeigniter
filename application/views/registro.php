@@ -25,7 +25,7 @@
 				  <div class="form-group">
 					  <label>Sexo</label><br>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
 						  <label class="form-check-label" for="inlineRadio1">Masculino</label>
 						</div>
 						<div class="form-check form-check-inline">
