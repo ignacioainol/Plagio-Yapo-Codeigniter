@@ -49,6 +49,7 @@ $greenlight: #76ff03;
 	}
 }
 .mainRegistro{
+	margin-bottom: 3em;
 	.titleRegistro{
 		padding-left: 3em;
 		padding-top: 2.2em;
@@ -64,5 +65,9 @@ $greenlight: #76ff03;
 	}
 	.sexOption{
 		margin-bottom: 5em;
+	}
+
+	#btnRegister{
+		width: 60%;
 	}
 }

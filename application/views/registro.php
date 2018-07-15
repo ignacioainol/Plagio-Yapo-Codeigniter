@@ -16,8 +16,8 @@
 				<form>
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
-				    <label>Nombre Completo</label>
-				    <input type="text" id="nombreCompleto" class="form-control" placeholder="Ingresar tu nombre">
+				    <label>Nombre Completo *</label>
+				    <input type="text" required="required" onkeypress="return textonly(event)" class="form-control " id="fullname" placeholder="Ingresar tu nombre">
 				  </div>
 				  <!--[/NOMBRE COMPLETO]-->
 
@@ -37,7 +37,7 @@
 
 				  <!--[REGION]-->
 				  <div class="form-group">
-				  	  <label for="inputState">Región</label>
+				  	  <label for="inputState">Región *</label>
 				      <select id="selectRegion" name="region" class="form-control">
 				      	<option selected>Seleccione Región</option>
 				      	<? foreach($regions as $key => $val): ?>
@@ -57,10 +57,10 @@
 				  <!--[/COMUNA]-->
 
 				  <!--[TELEFONO]-->
-				  <div class="form-group">
+				  <div class="form-group" style="margin-bottom: 0">
 				  	<div class="row">
 				  		<div class="col-md-3">
-				  			<label for="inputState">Teléfono</label>
+				  			<label for="inputState">Teléfono *</label>
 				  		</div>
 				  		<div class="col-md-9">
 				  			 <!--[TIPO TELEFONO]-->
@@ -70,7 +70,7 @@
 									  <label class="form-check-label">Móvil</label>
 									</div>
 									<div class="form-check form-check-inline">
-									  <input class="form-check-input" type="radio" name="typePhone" value="fijo">
+									  <input required class="form-check-input" type="radio" name="typePhone" value="fijo">
 									  <label class="form-check-label">Fijo</label>
 									</div>
 								</div>
@@ -78,21 +78,79 @@
 				  		</div>
 				  	</div>
 				  </div>
-				  <!--[/TELEFONO]-->
+
 				  <!--[TYPE PHONE]-->
 				  <div id="typePhone">
 				  	<!--[MOVIL]-->
-				  	<div class="form-group row">
-				    	<label class="col-xs-2 col-sm-2 col-form-label" style="text-align: right">+569</label>
-				    <div class="col-xs-8 col-sm-9">
-				      <input type="email" class="form-control" placeholder="Ej: 59271861">
-				    </div>
+					<div class="form-row" style="margin-bottom: 8px">
+					    <div class="col-sm-12">
+					      <div class="input-group mb-2">
+					        <div class="input-group-prepend">
+					          <div class="input-group-text">+569</div>
+					        </div>
+					        <input type="text" onkeypress="return validateNumber(event)" class="form-control" placeholder="Ej: 59271861">
+					      </div>
+					    </div>
+					  </div>
+					<!--[/MOVIL]-->
 				  </div>
-				  	<!--[/MOVIL]-->
-				  </div>
+				  <!--[/TELEFONO]-->
+
 				  <!--[/TYPE PHONE]-->
 
-				  <button type="submit" id="btnRegister" class="btn btn-primary">Registrar</button>
+				  <!--[EMAIL]-->
+				  <div class="form-group">
+				    <label>E-mail *</label>
+				    <input type="email" id="correoElectronico" class="form-control" placeholder="Ingresar tu correo electrónico">
+				  </div>
+				  <!--[/EMAIL]-->
+
+				  <!--[CONTRASENA]-->
+				  <div class="form-group">
+				    <label>Contraseña *</label>
+				    <input type="password" id="contrasena" class="form-control" placeholder="********">
+				  </div>
+				  <!--[/CONTRASENA]-->
+
+				  <!--[REPETIR CONTRASENA]-->
+				  <div class="form-group">
+				    <label>Confirmar Contraseña *</label>
+				    <input type="password" id="contrasenaConfirm" class="form-control" placeholder="********">
+				  </div>
+				  <!--[/REPETIR CONTRASENA]-->
+
+				  <!--[TERMINOS Y CONDICIONES]-->
+				  <div class="form-group" style="text-align: center">
+				  	<input class="form-check-input" type="checkbox" id="inlineFormCheck">
+				    <label class="form-check-label" for="inlineFormCheck">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
+
+					<!--[MODAL TERMINOS]-->
+					<div class="modal fade" id="terminosCondiciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        ...
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary">Save changes</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<!--[MODAL TERMINOS]-->
+				  </div>
+				  <!--[/TERMINOS Y CONDICIONES]-->
+				
+				  <div class="text-center">
+				  	<button type="submit" id="btnRegister" class="btn btn-primary">Registrar</button>
+				  </div>
 				</form>
 			</div>
 			<!--[/FORMULARIO REGISTRO]-->

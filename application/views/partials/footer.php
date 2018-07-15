@@ -33,7 +33,14 @@
 		document.getElementById('btnRegister').addEventListener('click',function(e){
 			e.preventDefault();
 			$.ajax({
-				url: '<?= base_url() . '/' ?>'
+				type: 'POST',
+				url: '<?= base_url() . 'crearcuenta/registro' ?>',
+				data:{
+					fullname: $('#fullname').val()
+				},
+				success: function(response){
+					alert(response);
+				}
 			});
 		});
 	</script>

@@ -18,6 +18,24 @@ class Crearcuenta extends CI_Controller{
 	public function getTowns($region_id){
 		$towns = $this->Region_model->getTownsByRegionId($region_id);
 		echo json_encode($towns, true);
-		
+	}
+
+	public function registro(){
+		$errorMessage = "";
+		if($_POST){
+			$fullname = $this->input->post('fullname');
+			if($fullname != ""){
+				echo $fullname;
+			}else{
+				$errorMessage = "Ingresa tu nombre";
+			}
+			if($errorMessage != ""){
+				echo "Bieeeen" . $fullname;
+			}else{
+				echo $errorMessage;
+			}
+		}else{
+			echo "no wn";
+		}
 	}
 }
