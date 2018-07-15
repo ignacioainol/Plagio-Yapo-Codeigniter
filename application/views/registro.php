@@ -17,7 +17,7 @@
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo</label>
-				    <input type="text" class="form-control" placeholder="Ingresar tu nombre">
+				    <input type="text" id="nombreCompleto" class="form-control" placeholder="Ingresar tu nombre">
 				  </div>
 				  <!--[/NOMBRE COMPLETO]-->
 
@@ -25,11 +25,11 @@
 				  <div class="form-group">
 					  <label>Sexo</label><br>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" checked type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+						  <input class="form-check-input" checked type="radio" name="sexo" id="inlineRadio1" value="masculino">
 						  <label class="form-check-label" for="inlineRadio1">Masculino</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+						  <input class="form-check-input" type="radio" name="sexo" id="inlineRadio2" value="femenino">
 						  <label class="form-check-label" for="inlineRadio2">Femenino</label>
 						</div>
 					</div>
@@ -38,7 +38,7 @@
 				  <!--[REGION]-->
 				  <div class="form-group">
 				  	  <label for="inputState">Región</label>
-				      <select id="selectRegion" class="form-control">
+				      <select id="selectRegion" name="region" class="form-control">
 				      	<option selected>Seleccione Región</option>
 				      	<? foreach($regions as $key => $val): ?>
 				        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
@@ -50,13 +50,49 @@
 				  <!--[COMUNA]-->
 				  <div class="form-group">
 				  	  <label for="inputState">Comuna</label>
-				      <select id="inputState" class="form-control">
+				      <select id="inputState" name="town" class="form-control">
 				      	<option selected>Seleccione Comuna</option>
 				      </select>
 				  </div>
 				  <!--[/COMUNA]-->
 
-				  <button type="submit" class="btn btn-primary">Submit</button>
+				  <!--[TELEFONO]-->
+				  <div class="form-group">
+				  	<div class="row">
+				  		<div class="col-md-3">
+				  			<label for="inputState">Teléfono</label>
+				  		</div>
+				  		<div class="col-md-9">
+				  			 <!--[TIPO TELEFONO]-->
+							  <div class="form-group">
+									<div class="form-check form-check-inline">
+									  <input class="form-check-input" checked type="radio" name="typePhone" value="movil">
+									  <label class="form-check-label">Móvil</label>
+									</div>
+									<div class="form-check form-check-inline">
+									  <input class="form-check-input" type="radio" name="typePhone" value="fijo">
+									  <label class="form-check-label">Fijo</label>
+									</div>
+								</div>
+							  <!--[/TIPO TELEFONO]-->
+				  		</div>
+				  	</div>
+				  </div>
+				  <!--[/TELEFONO]-->
+				  <!--[TYPE PHONE]-->
+				  <div id="typePhone">
+				  	<!--[MOVIL]-->
+				  	<div class="form-group row">
+				    	<label class="col-xs-2 col-sm-2 col-form-label" style="text-align: right">+569</label>
+				    <div class="col-xs-8 col-sm-9">
+				      <input type="email" class="form-control" placeholder="Ej: 59271861">
+				    </div>
+				  </div>
+				  	<!--[/MOVIL]-->
+				  </div>
+				  <!--[/TYPE PHONE]-->
+
+				  <button type="submit" id="btnRegister" class="btn btn-primary">Registrar</button>
 				</form>
 			</div>
 			<!--[/FORMULARIO REGISTRO]-->
