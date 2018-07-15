@@ -32,11 +32,25 @@
 	<script>
 		document.getElementById('btnRegister').addEventListener('click',function(e){
 			e.preventDefault();
+			let agree = "";
+			if($('#agree').not(':checked').length){
+			   agree = "nochecked";
+			}else{
+			   agree = "checked";
+			} 
 			$.ajax({
 				type: 'POST',
 				url: '<?= base_url() . 'crearcuenta/registro' ?>',
 				data:{
-					fullname: $('#fullname').val()
+					fullname: $('#fullname').val(),
+					sexo: $('.selectSex:checked').val(),
+					region: $('#selectRegion').val(),
+					town: $('#selectTown').val(),
+					number: $('.numberPhone').val(),
+					email: $('#correoElectronico').val(),
+					password: $('#password').val(),
+					passwordRepeat: $('#passwordRepeat').val(),
+					agree : agree
 				},
 				success: function(response){
 					alert(response);

@@ -25,19 +25,19 @@
 				  <div class="form-group">
 					  <label>Sexo</label><br>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" checked type="radio" name="sexo" id="inlineRadio1" value="masculino">
-						  <label class="form-check-label" for="inlineRadio1">Masculino</label>
+						  <input class="form-check-input selectSex" checked type="radio" name="sexo" value="masculino">
+						  <label class="form-check-label">Masculino</label>
 						</div>
 						<div class="form-check form-check-inline">
-						  <input class="form-check-input" type="radio" name="sexo" id="inlineRadio2" value="femenino">
-						  <label class="form-check-label" for="inlineRadio2">Femenino</label>
+						  <input class="form-check-input selectSex" type="radio" name="sexo" value="femenino">
+						  <label class="form-check-label">Femenino</label>
 						</div>
 					</div>
 				  <!--[/SEXO]-->
 
 				  <!--[REGION]-->
 				  <div class="form-group">
-				  	  <label for="inputState">Región *</label>
+				  	  <label>Región *</label>
 				      <select id="selectRegion" name="region" class="form-control">
 				      	<option selected>Seleccione Región</option>
 				      	<? foreach($regions as $key => $val): ?>
@@ -49,8 +49,8 @@
 
 				  <!--[COMUNA]-->
 				  <div class="form-group">
-				  	  <label for="inputState">Comuna</label>
-				      <select id="inputState" name="town" class="form-control">
+				  	  <label>Comuna</label>
+				      <select id="selectTown" name="town" class="form-control">
 				      	<option selected>Seleccione Comuna</option>
 				      </select>
 				  </div>
@@ -88,7 +88,7 @@
 					        <div class="input-group-prepend">
 					          <div class="input-group-text">+569</div>
 					        </div>
-					        <input type="text" onkeypress="return validateNumber(event)" class="form-control" placeholder="Ej: 59271861">
+					        <input type="text" onkeypress="return validateNumber(event)" class="form-control numberPhone" placeholder="Ej: 59271861">
 					      </div>
 					    </div>
 					  </div>
@@ -108,21 +108,21 @@
 				  <!--[CONTRASENA]-->
 				  <div class="form-group">
 				    <label>Contraseña *</label>
-				    <input type="password" id="contrasena" class="form-control" placeholder="********">
+				    <input type="password" id="password" class="form-control" placeholder="********">
 				  </div>
 				  <!--[/CONTRASENA]-->
 
 				  <!--[REPETIR CONTRASENA]-->
 				  <div class="form-group">
 				    <label>Confirmar Contraseña *</label>
-				    <input type="password" id="contrasenaConfirm" class="form-control" placeholder="********">
+				    <input type="password" id="passwordRepeat" class="form-control" placeholder="********">
 				  </div>
 				  <!--[/REPETIR CONTRASENA]-->
 
 				  <!--[TERMINOS Y CONDICIONES]-->
 				  <div class="form-group" style="text-align: center">
-				  	<input class="form-check-input" type="checkbox" id="inlineFormCheck">
-				    <label class="form-check-label" for="inlineFormCheck">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
+				  	<input class="form-check-input" type="checkbox" id="agree">
+				    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 
 					<!--[MODAL TERMINOS]-->
 					<div class="modal fade" id="terminosCondiciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
