@@ -54,7 +54,7 @@ class Crearcuenta extends CI_Controller{
 			}
 
 			if($this->input->post('town') != "Seleccione Comuna"){
-				$region = $this->input->post('region');
+				$town = $this->input->post('town');
 			}
 
 			if($this->input->post('number') != ""){
@@ -100,10 +100,9 @@ class Crearcuenta extends CI_Controller{
 					if($acceptTerms != ""){
 						echo $acceptTerms;
 					}else{
-						echo "Vamos bieeen " . $fullname . " " .$sexo . " " . $region . " " .$town . " " . $numberPhone . " " . $email ." ".$password ." ". $passwordRepeat;
+						// echo "Vamos bieeen " . $fullname . " " .$sexo . " " . $region . " " .$town . " " . $numberPhone . " " . $email ." ".$password ." ". $passwordRepeat;
 					}
 				}
-				// echo "vamos bieeen " . $fullname . " " .$sexo . " " . $region . " " .$town . " " . $numberPhone . " " . $email ." ".$password ." ". $passwordRepeat;
 			}
 		}else{
 			echo "no tiene post";

@@ -2,11 +2,11 @@ $('document').ready(function(){
 	$('#selectRegion').on('change',function(){
 		$.getJSON('http://localhost/yapues/crearcuenta/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
-				$('#inputState').append('<option>'+value.town_name+'</option>');
+				$('#selectTown').append('<option>'+value.town_name+'</option>');
 			});
 		});
-		$('#inputState').empty();
-		$('#inputState').append('<option>Seleccione Comuna</option>');
+		$('#selectTown').empty();
+		$('#selectTown').append('<option>Seleccione Comuna</option>');
 	});
 
 	// Type of Phone
