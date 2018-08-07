@@ -17,7 +17,7 @@
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo *</label>
-				    <input type="text" required="required" onkeypress="return textonly(event)" class="form-control " id="fullname" placeholder="Ingresar tu nombre">
+				    <input type="text" required="required" name="fullname" onkeypress="return textonly(event)" class="form-control" id="fullname" placeholder="Ingresar tu nombre">
 				  </div>
 				  <!--[/NOMBRE COMPLETO]-->
 
