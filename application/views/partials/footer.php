@@ -17,7 +17,7 @@
 			  <div class="btnLogin">
 			  	<small><a href="">¿ Olvidaste tu contraseña ?</a></small>
 			  	<button type="submit" class="btn btn-danger btnEnter">Entrar</button>
-			  	<p>¿ No tienes cuenta ? <a href="<?= base_url() ?>crearcuenta">Crear cuenta</a></p>
+			  	<p>¿ No tienes cuenta ? <a href="<?= base_url() ?>registro">Crear cuenta</a></p>
 			  </div>
 			</form>
 	      </div>

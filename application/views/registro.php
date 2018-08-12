@@ -13,7 +13,7 @@
 		<div class="col-md-7">
 			<!--[FORMULARIO REGISTRO]-->
 			<div id="myForm">
-				<form>
+				<form action="registro/create_user" method="post">
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo *</label>

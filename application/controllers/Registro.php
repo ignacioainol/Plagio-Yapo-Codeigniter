@@ -21,6 +21,17 @@ class Registro extends CI_Controller{
 				'rules' => 'required|min_length[6]|max_length[100]'
 			)
 		);
+
+		$this->form_validation->set_rules($formRules);
+
+		if($this->form_validation->run() === TRUE){
+			//Form Ok
+			echo "form ok";
+		}else{
+			//Form No Ok
+			echo "form no ok";
+		}
+
 		$data['regions'] = $this->Region_model->getRegions();
 		$this->load->view('partials/main_header');
 		$this->load->view('registro',$data);
