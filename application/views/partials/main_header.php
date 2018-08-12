@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h1 id="mainTitle">Testing Code!</h1>
+				<a href="<?= base_url() ?>"><h1 id="mainTitle">Testing Code!</h1></a>
 			</div>
 			<div class="col-md-6">
 				<button class="btn btn-outline-info">Publica tu Aviso</button>

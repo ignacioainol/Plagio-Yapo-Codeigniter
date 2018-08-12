@@ -8,16 +8,16 @@
 		</div>
 		<div class="col-md-6"></div>
 	</div>
-
+	<?= validation_errors() ?>
 	<div class="row">
 		<div class="col-md-7">
 			<!--[FORMULARIO REGISTRO]-->
 			<div id="myForm">
-				<form action="registro/create_user" method="post">
+				<form action="<?= base_url() ?>registro/create_user" method="post">
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo *</label>
-				    <input type="text" required="required" name="fullname" onkeypress="return textonly(event)" class="form-control" id="fullname" placeholder="Ingresar tu nombre">
+				    <input type="text" name="fullname" onkeypress="return textonly(event)" class="form-control" id="fullname" placeholder="Ingresar tu nombre">
 				  </div>
 				  <!--[/NOMBRE COMPLETO]-->
 

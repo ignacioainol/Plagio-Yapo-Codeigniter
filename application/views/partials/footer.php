@@ -29,7 +29,7 @@
 	<script src="<?= base_url() ?>public/js/jquery.js"></script>
 	<script src="<?= base_url() ?>public/js/bootstrap.min.js"></script>
 	<script src="<?= base_url() ?>public/js/main.js"></script>
-	<script>
+<!-- 	<script>
 		document.getElementById('btnRegister').addEventListener('click',function(e){
 			e.preventDefault();
 			let agree = "";
@@ -40,7 +40,7 @@
 			} 
 			$.ajax({
 				type: 'POST',
-				url: '<?= base_url() . 'crearcuenta/registro' ?>',
+				url: '<?= base_url() . 'registro' ?>',
 				data:{
 					fullname: $('#fullname').val(),
 					sexo: $('.selectSex:checked').val(),
@@ -57,7 +57,7 @@
 				}
 			});
 		});
-	</script>
+	</script> -->
 
 </body>
 </html>
