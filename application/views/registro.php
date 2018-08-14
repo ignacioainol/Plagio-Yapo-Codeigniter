@@ -13,7 +13,7 @@
 		<div class="col-md-7">
 			<!--[FORMULARIO REGISTRO]-->
 			<div id="myForm">
-				<form action="<?= base_url() ?>registro/create_user" method="post">
+				<form action="<?= base_url() ?>registro" method="post">
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo *</label>
@@ -108,20 +108,20 @@
 				  <!--[CONTRASENA]-->
 				  <div class="form-group">
 				    <label>Contraseña *</label>
-				    <input type="password" id="password" class="form-control" placeholder="********">
+				    <input type="password" id="password" name="password" class="form-control" placeholder="********">
 				  </div>
 				  <!--[/CONTRASENA]-->
 
 				  <!--[REPETIR CONTRASENA]-->
 				  <div class="form-group">
 				    <label>Confirmar Contraseña *</label>
-				    <input type="password" id="passwordRepeat" class="form-control" placeholder="********">
+				    <input type="password" id="passwordRepeat" name="passwordRepeat" class="form-control" placeholder="********">
 				  </div>
 				  <!--[/REPETIR CONTRASENA]-->
 
 				  <!--[TERMINOS Y CONDICIONES]-->
 				  <div class="form-group" style="text-align: center">
-				  	<input class="form-check-input" type="checkbox" id="agree" name="agree" <?= set_checkbox('agree','agree',TRUE) ?>>
+				  	<input class="form-check-input" type="checkbox" id="agree" name="agree">
 				    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 
 					<!--[MODAL TERMINOS]-->
