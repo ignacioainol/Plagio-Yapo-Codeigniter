@@ -121,7 +121,7 @@
 
 				  <!--[TERMINOS Y CONDICIONES]-->
 				  <div class="form-group" style="text-align: center">
-				  	<input class="form-check-input" type="checkbox" id="agree" name="agree">
+				  	<input class="form-check-input" type="checkbox" id="agree" name="accept_terms" value="yes">
 				    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 
 					<!--[MODAL TERMINOS]-->

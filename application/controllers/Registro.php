@@ -18,7 +18,7 @@ class Registro extends CI_Controller{
 		$this->form_validation->set_rules('email','E-mail','required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password','Contraseña','required|min_length[6]');
 		$this->form_validation->set_rules('passwordRepeat','Confirmar','required|matches[password]');
-		$this->form_validation->set_rules('agree', 'Estoy de acuerdo', 'callback_accept_terms');
+		$this->form_validation->set_rules('accept_terms', '...', 'callback_accept_terms');
 
 
 		if($this->form_validation->run() === FALSE){
@@ -40,10 +40,10 @@ class Registro extends CI_Controller{
 	}
 
 	//Callback para que sea requerido el checkbox aceptar los terminos
-	public function accept_terms() {
-	    if($this->input->post('agree')) return true;
-	    $this->form_validation->set_message('agree', 'Please read and accept our terms and conditions.');
+	function accept_terms() {
+	    if (isset($_POST['accept_terms'])) return true;
+	    $this->form_validation->set_message('accept_terms', 'Please read and accept our terms and conditions.');
 	    return false;
-	} 
+	}
 
 }
