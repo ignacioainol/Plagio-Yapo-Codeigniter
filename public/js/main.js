@@ -1,6 +1,6 @@
 $('document').ready(function(){
 	$('#selectRegion').on('change',function(){
-		$.getJSON('http://localhost/yapues/crearcuenta/gettowns/'+ this.value,function(data){
+		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
 				$('#selectTown').append('<option>'+value.town_name+'</option>');
 			});

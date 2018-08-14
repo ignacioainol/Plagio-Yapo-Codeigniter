@@ -15,22 +15,11 @@ class Registro extends CI_Controller{
 
 	public function create_user(){
 
-		// $formRules = array(
-		// 	array(
-		// 		'field' => 'fullname',
-		// 		'label' => 'Nombre',
-		// 		'rules' => 'required|min_length[6]|max_length[100]'
-		// 	)
-		// 	// array(
-		// 	// 	'field' => 
-		// 	// ),
-		// );
-
-		// $this->form_validation->set_rules($formRules);
-
 		$this->form_validation->set_rules('fullname','Nombre','required|min_length[6]|max_length[100]');
 		$this->form_validation->set_rules('sexo','Sexo','required');
 		$this->form_validation->set_rules('region','Región','required');
+		$this->form_validation->set_rules('numberPhone','Número telefónico','required|min_length[7]|max_length[8]');
+		$this->form_validation->set_rules('email','E-mail','required|valid_email|is_unique[users.email]');
 
 		if($this->form_validation->run() === FALSE){
 			$data['regions'] = $this->Region_model->getRegions();

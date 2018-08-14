@@ -17,7 +17,7 @@
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo *</label>
-				    <input type="text" name="fullname" onkeypress="return textonly(event)" class="form-control" id="fullname" placeholder="Ingresar tu nombre">
+				    <input type="text" name="fullname" value="<?= set_value('fullname') ?>" onkeypress="return textonly(event)" class="form-control" id="fullname" placeholder="Ingresar tu nombre">
 				  </div>
 				  <!--[/NOMBRE COMPLETO]-->
 
@@ -88,7 +88,7 @@
 					        <div class="input-group-prepend">
 					          <div class="input-group-text">+569</div>
 					        </div>
-					        <input type="text" onkeypress="return validateNumber(event)" class="form-control numberPhone" placeholder="Ej: 59271861">
+					        <input type="text" onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" value="<?= set_value('numberPhone') ?>" placeholder="Ej: 59271861">
 					      </div>
 					    </div>
 					  </div>
@@ -101,7 +101,7 @@
 				  <!--[EMAIL]-->
 				  <div class="form-group">
 				    <label>E-mail *</label>
-				    <input type="email" id="correoElectronico" class="form-control" placeholder="Ingresar tu correo electrónico">
+				    <input type="email" id="correoElectronico" class="form-control" placeholder="Ingresar tu correo electrónico" name="email" value="<?= set_value('email') ?>">
 				  </div>
 				  <!--[/EMAIL]-->
 
@@ -121,7 +121,7 @@
 
 				  <!--[TERMINOS Y CONDICIONES]-->
 				  <div class="form-group" style="text-align: center">
-				  	<input class="form-check-input" type="checkbox" id="agree">
+				  	<input class="form-check-input" type="checkbox" id="agree" name="agree" <?= set_checkbox('agree','agree',TRUE) ?>>
 				    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 
 					<!--[MODAL TERMINOS]-->
