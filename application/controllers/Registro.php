@@ -10,27 +10,37 @@ class Registro extends CI_Controller{
 	}
 
 	public function index(){
+		$data['regions'] = $this->Region_model->getRegions();
+		$this->load->view('partials/main_header');
+		$this->load->view('registro',$data);
+		$this->load->view('partials/footer');
+	}
 
-		$this->form_validation->set_rules('fullname','Nombre','trim|required|min_length[6]|max_length[100]|xss_clean');
-		$this->form_validation->set_rules('sexo','Sexo','required');
-		$this->form_validation->set_rules('region','Región','required');
-		$this->form_validation->set_rules('numberPhone','Número telefónico','required|min_length[7]|max_length[8]');
-		$this->form_validation->set_rules('email','E-mail','required|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('password','Contraseña','required|min_length[6]');
-		$this->form_validation->set_rules('passwordRepeat','Confirmar','required|matches[password]');
-		$this->form_validation->set_rules('accept_terms', '...', 'callback_accept_terms');
+	public function register(){
+		$validator = array(
+			'success' => false,
+			'messages' => array()
+		);
 
+		$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">','</div>');
 
 		if($this->form_validation->run() === FALSE){
-			$data['regions'] = $this->Region_model->getRegions();
-			$this->load->view('partials/main_header');
-			$this->load->view('registro',$data);
-			$this->load->view('partials/footer');
+			$validator['success'] = false;
+			foreach ($_POST as $key => $value) {
+				$validator['messages'][$key] = form_error($key);
+			}
+			// $this->load->view('partials/main_header');
+			// $this->load->view('registro',$data);
+			// $this->load->view('partials/footer');
 		}else{
 			//Form Ok
 			if($this->Register_model->insertUser())
-				echo "entre dos tierras ok :D";
+				$validator['success'] = true;
+				
+			$validator['messages'] = "Ok";
 		}
+
+		echo json_encode($validator);
 	}
 
 	//Retorna un json con las regiones para completar el formulario de Registro
@@ -42,7 +52,7 @@ class Registro extends CI_Controller{
 	//Callback para que sea requerido el checkbox aceptar los terminos
 	function accept_terms() {
 	    if (isset($_POST['accept_terms'])) return true;
-	    $this->form_validation->set_message('accept_terms', 'Please read and accept our terms and conditions.');
+	    $this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
 	    return false;
 	}
 

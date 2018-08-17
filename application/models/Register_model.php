@@ -7,6 +7,10 @@ class Register_model extends CI_Model{
 	}
 
 	public function insertUser(){
+
+		$salt = $this->salt();
+		$password = $this->makePassword($this->input->post('password'),$salt);
+
 		$data = array(
 			'fullname'  => ucfirst($this->input->post('fullname')),
 			'sex' 	    => $this->input->post('sexo'),
@@ -14,12 +18,20 @@ class Register_model extends CI_Model{
 			'town_id'   => $this->input->post('town'),
 			'phone' 	=> $this->input->post('numberPhone'),
 			'email'		=> $this->input->post('email'),
-			'password'  => $this->input->post('password')
+			'password'  => $password
  		);
 
  		if($this->db->insert('users',$data))
  			return true;
  		else
  			return false;
+	}
+
+	public function salt(){
+		return password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+	}
+
+	public function makePassword($password = null, $salt = null){
+		return hash('sha256',$password.$salt);
 	}
 }

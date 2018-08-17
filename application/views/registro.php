@@ -8,16 +8,17 @@
 		</div>
 		<div class="col-md-6"></div>
 	</div>
-	<?= validation_errors() ?>
 	<div class="row">
 		<div class="col-md-7">
 			<!--[FORMULARIO REGISTRO]-->
 			<div id="myForm">
-				<form action="<?= base_url() ?>registro" method="post">
+				<div id="messages"></div>
+				<form action="<?= base_url() ?>registro/register" id="registerForm" method="post">
 				  <!--[NOMBRE COMPLETO]-->
 				  <div class="form-group">
 				    <label>Nombre Completo *</label>
 				    <input type="text" name="fullname" value="<?= set_value('fullname') ?>" onkeypress="return textonly(event)" class="form-control" id="fullname" placeholder="Ingresar tu nombre">
+				    <?= form_error('fullname') ?>
 				  </div>
 				  <!--[/NOMBRE COMPLETO]-->
 
@@ -90,6 +91,7 @@
 					        </div>
 					        <input type="text" onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" value="<?= set_value('numberPhone') ?>" placeholder="Ej: 59271861">
 					      </div>
+					      <?= form_error('numberPhone') ?>
 					    </div>
 					  </div>
 					<!--[/MOVIL]-->
@@ -102,6 +104,7 @@
 				  <div class="form-group">
 				    <label>E-mail *</label>
 				    <input type="email" id="correoElectronico" class="form-control" placeholder="Ingresar tu correo electrónico" name="email" value="<?= set_value('email') ?>">
+				    <?= form_error('email') ?>
 				  </div>
 				  <!--[/EMAIL]-->
 
@@ -109,6 +112,7 @@
 				  <div class="form-group">
 				    <label>Contraseña *</label>
 				    <input type="password" id="password" name="password" class="form-control" placeholder="********">
+				    <?= form_error('password') ?>
 				  </div>
 				  <!--[/CONTRASENA]-->
 
@@ -116,6 +120,7 @@
 				  <div class="form-group">
 				    <label>Confirmar Contraseña *</label>
 				    <input type="password" id="passwordRepeat" name="passwordRepeat" class="form-control" placeholder="********">
+				    <?= form_error('passwordRepeat') ?>
 				  </div>
 				  <!--[/REPETIR CONTRASENA]-->
 
@@ -123,6 +128,7 @@
 				  <div class="form-group" style="text-align: center">
 				  	<input class="form-check-input" type="checkbox" id="agree" name="accept_terms" value="yes">
 				    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
+				    <?= form_error('accept_terms') ?>
 
 					<!--[MODAL TERMINOS]-->
 					<div class="modal fade" id="terminosCondiciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">

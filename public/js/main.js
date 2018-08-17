@@ -1,4 +1,5 @@
 $('document').ready(function(){
+	//Set region json :D
 	$('#selectRegion').on('change',function(){
 		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
@@ -16,6 +17,45 @@ $('document').ready(function(){
 		}else if(this.value == 'fijo'){
 			$('#typePhone').html('<!--[FIJO]--><div class="form-group row"><div class="col-sm-2" style="padding-right:0"><input type="text" class="form-control" placeholder="Codigo"></div><div class="col-sm-10"><input type="text" required onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" placeholder="Ej: 23536784"></div></div><!--[/FIJO]-->');
 		}
+	});
+
+	//Ajax form register :D
+	$('#registerForm').unbind('submit').bind('submit',function(){
+		var form = $(this);
+
+		alert("here ok");
+
+		$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			data: form.serialize(),
+			dataType: 'json',
+			success: function(response){
+				if(response.success == true){
+					$('#messages').html('<div class="alert alert-success" role="alert">'+
+  											'<strong>Well done!</strong> Registro ok :D'+
+										'</div>');
+
+					$('#registerForm')[0].reset();
+					$('.text-danger').remove();
+					$('.form-group').removeClass('has-error').removeClass('has-success');
+				}else{
+					$.each(response.messages,function(index,value){
+						var element = $('#'+index);
+						$(element)
+							.closest('.form-group')
+							.removeClass('has-error')
+							.removeClass('has-success')
+							.addClass(value.length > 0 ? 'has-error':'has-success')
+							.find('.text-danger').remove();
+
+						$(element).after(value);
+					});
+				}
+			}
+		});
+
+		return false;
 	});
 
 });
