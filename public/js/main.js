@@ -21,9 +21,14 @@ $('document').ready(function(){
 
 	//Ajax form register :D
 	$('#registerForm').unbind('submit').bind('submit',function(){
+		$('#acceptTerminos').on('click',function(){
+			$('#accept_terms')[0].checked = true;
+		});
+
 		var form = $(this);
 
-		$.ajax({
+		if($('#accept_terms').is(':checked')){
+			$.ajax({
 			url: form.attr('action'),
 			type: form.attr('method'),
 			data: form.serialize(),
@@ -54,8 +59,77 @@ $('document').ready(function(){
 				}
 			}
 		});
+			return false;
+		}else{
+			$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			data: form.serialize(),
+			dataType: 'json',
+			success: function(response){
+				console.log(response);
+				if(response.success == true){
+					$('#messages').html('<div class="alert alert-success" role="alert">'+
+  											'<strong>Well done!</strong> Registro ok :D'+
+										'</div>');
 
-		return false;
+					$('#registerForm')[0].reset();
+					$('.alert-warning').remove();
+					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+				}else{
+					$.each(response.messages,function(index,value){
+						var element = $('#'+index);
+						console.log(index);
+
+						$(element)
+							.closest('.form-group')
+							.removeClass('alert-warning')
+							.removeClass('has-success')
+							.addClass(value.length > 0 ? 'has-error':'has-success')
+							.find('.alert-warning').remove();
+
+						$(element).after(value);
+					});
+				}
+			}
+		});
+			$('#exampleModal').modal('show');
+			return false;
+		}
+
+		// $.ajax({
+		// 	url: form.attr('action'),
+		// 	type: form.attr('method'),
+		// 	data: form.serialize(),
+		// 	dataType: 'json',
+		// 	success: function(response){
+		// 		console.log(response);
+		// 		if(response.success == true){
+		// 			$('#messages').html('<div class="alert alert-success" role="alert">'+
+  // 											'<strong>Well done!</strong> Registro ok :D'+
+		// 								'</div>');
+
+		// 			$('#registerForm')[0].reset();
+		// 			$('.alert-warning').remove();
+		// 			$('.form-group').removeClass('alert-warning').removeClass('has-success');
+		// 		}else{
+		// 			$.each(response.messages,function(index,value){
+		// 				var element = $('#'+index);
+
+		// 				$(element)
+		// 					.closest('.form-group')
+		// 					.removeClass('alert-warning')
+		// 					.removeClass('has-success')
+		// 					.addClass(value.length > 0 ? 'has-error':'has-success')
+		// 					.find('.alert-warning').remove();
+
+		// 				$(element).after(value);
+		// 			});
+		// 		}
+		// 	}
+		// });
+
+		// return false;
 	});
 
 

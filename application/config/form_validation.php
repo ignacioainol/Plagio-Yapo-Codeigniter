@@ -41,7 +41,7 @@ $config = array(
 		array(
 			'field' => 'accept_terms',
 			'label' => '...',
-			'rules' => 'required|callback_accept_terms'
+			'rules' => 'callback_accept_terms'
 		)
 	)
 );

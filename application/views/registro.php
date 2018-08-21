@@ -130,7 +130,9 @@
 			<div class="col-md-12">
 			  <!--[TERMINOS Y CONDICIONES]-->
 			  <div class="form-group" style="text-align: center">
-			  	<input class="form-check-input" type="checkbox" id="accept_terms" name="accept_terms" value="yes">
+
+			  	<input class="form-check-input" type="checkbox" id="accept_terms" name="accept_terms" checked="checked" value="yes" />
+
 			    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 			  </div>
 			  <!--[/TERMINOS Y CONDICIONES]-->
@@ -165,3 +167,18 @@
   </div>
 </div>
 <!--[MODAL TERMINOS]-->
+
+<!--[MODAL ACEPTAR TERMINOS]-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>Debes Aceptar los Términos y Condiciones</h5>
+        <div style="text-align: center">
+        	<button type="button" id="acceptTerminos" class="btn btn-info" data-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--[/MODAL ACEPTAR TERMINOS]-->
