@@ -23,14 +23,13 @@ $('document').ready(function(){
 	$('#registerForm').unbind('submit').bind('submit',function(){
 		var form = $(this);
 
-		alert("here ok");
-
 		$.ajax({
 			url: form.attr('action'),
 			type: form.attr('method'),
 			data: form.serialize(),
 			dataType: 'json',
 			success: function(response){
+				console.log(response);
 				if(response.success == true){
 					$('#messages').html('<div class="alert alert-success" role="alert">'+
   											'<strong>Well done!</strong> Registro ok :D'+
@@ -42,6 +41,7 @@ $('document').ready(function(){
 				}else{
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
+
 						$(element)
 							.closest('.form-group')
 							.removeClass('has-error')
@@ -57,6 +57,7 @@ $('document').ready(function(){
 
 		return false;
 	});
+
 
 });
 

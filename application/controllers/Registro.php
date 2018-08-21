@@ -29,9 +29,6 @@ class Registro extends CI_Controller{
 			foreach ($_POST as $key => $value) {
 				$validator['messages'][$key] = form_error($key);
 			}
-			// $this->load->view('partials/main_header');
-			// $this->load->view('registro',$data);
-			// $this->load->view('partials/footer');
 		}else{
 			//Form Ok
 			if($this->Register_model->insertUser())
@@ -50,10 +47,28 @@ class Registro extends CI_Controller{
 	}
 
 	//Callback para que sea requerido el checkbox aceptar los terminos
-	function accept_terms() {
-	    if (isset($_POST['accept_terms'])) return true;
-	    $this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
-	    return false;
+	// public function accept_terms() {
+	//     if (isset($_POST['accept_terms'])) return true; 
+	//     $this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
+	//     return false;
+	// }
+
+	public function accept_terms() {
+	    if (isset($_POST['accept_terms'])){
+	    	return true;
+	    }else{
+	    	$this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
+		    return false;
+	    }
+	}
+
+	public function check_select($city) {
+		if($city == 'xxx'){
+			$this->form_validation->set_message('check_select', 'Debes Seleccionar tu Región');
+            return false;
+		}else{
+			return true;
+		}
 	}
 
 }

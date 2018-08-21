@@ -1,7 +1,8 @@
 <?php
 
 $config = array(
-	'registro/register' => array(
+	//'registro/register' => array(
+	'registro/register' => array(		
 		array(
 			'field' => 'fullname',
 			'label' => 'Nombre',
@@ -13,10 +14,10 @@ $config = array(
 			'rules' => 'required'
 		),
 		array(
-			'field' => 'region',
-			'label' => 'Región',
-			'rules' => 'required'
-		),
+			'field' => 'selectRegion',
+			'label' => '...',
+			'rules' => 'required|callback_check_select'
+		),	
 		array(
 			'field' => 'numberPhone',
 			'label' => 'Número telefónico',
@@ -42,8 +43,5 @@ $config = array(
 			'label' => '...',
 			'rules' => 'callback_accept_terms'
 		)
-	),
-	'login' => array(
-
 	)
 );
