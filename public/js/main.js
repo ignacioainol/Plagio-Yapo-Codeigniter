@@ -37,17 +37,17 @@ $('document').ready(function(){
 
 					$('#registerForm')[0].reset();
 					$('.text-danger').remove();
-					$('.form-group').removeClass('has-error').removeClass('has-success');
+					$('.form-group').removeClass('alert-warning').removeClass('has-success');
 				}else{
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
 
 						$(element)
 							.closest('.form-group')
-							.removeClass('has-error')
+							.removeClass('alert-warning')
 							.removeClass('has-success')
 							.addClass(value.length > 0 ? 'has-error':'has-success')
-							.find('.text-danger').remove();
+							.find('.alert-warning').remove();
 
 						$(element).after(value);
 					});
