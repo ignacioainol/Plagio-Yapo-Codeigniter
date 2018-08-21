@@ -85,12 +85,16 @@
 			  	<!--[MOVIL]-->
 				<div class="form-row" style="margin-bottom: 8px">
 				    <div class="col-sm-12">
-				      <div class="input-group mb-2">
-				        <div class="input-group-prepend">
-				          <div class="input-group-text">+569</div>
-				        </div>
-				        <input type="text" onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" value="<?= set_value('numberPhone') ?>" placeholder="Ej: 59271861">
-				      </div>
+				    	<div class="form-group">
+				    		<div id="numberPhone">
+					    		<div class="input-group mb-2 noMarginBottom">
+							        <div class="input-group-prepend">
+							          <div class="input-group-text">+569</div>
+							        </div>
+							        <input type="text" onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" value="<?= set_value('numberPhone') ?>" placeholder="Ej: 59271861">
+						      	</div>
+					    	</div>
+				    	</div>
 				    </div>
 				  </div>
 				<!--[/MOVIL]-->
@@ -103,7 +107,6 @@
 			  <div class="form-group">
 			    <label>E-mail *</label>
 			    <input type="email" class="form-control" placeholder="Ingresar tu correo electrónico" name="email" id="email" value="<?= set_value('email') ?>">
-			    <?= form_error('email') ?>
 			  </div>
 			  <!--[/EMAIL]-->
 
@@ -111,7 +114,6 @@
 			  <div class="form-group">
 			    <label>Contraseña *</label>
 			    <input type="password" id="password" name="password" class="form-control" placeholder="********">
-			    <?= form_error('password') ?>
 			  </div>
 			  <!--[/CONTRASENA]-->
 
@@ -119,7 +121,6 @@
 			  <div class="form-group">
 			    <label>Confirmar Contraseña *</label>
 			    <input type="password" id="passwordRepeat" name="passwordRepeat" class="form-control" placeholder="********">
-			    <?= form_error('passwordRepeat') ?>
 			  </div>
 			  <!--[/REPETIR CONTRASENA]-->
 			</div>
@@ -127,9 +128,9 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<!--[TERMINOS Y CONDICIONES]-->
+			  <!--[TERMINOS Y CONDICIONES]-->
 			  <div class="form-group" style="text-align: center">
-			  	<input class="form-check-input" type="checkbox" name="accept_terms" value="yes" id="accept_terms">
+			  	<input class="form-check-input" type="checkbox" id="accept_terms" name="accept_terms" value="yes">
 			    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 			  </div>
 			  <!--[/TERMINOS Y CONDICIONES]-->

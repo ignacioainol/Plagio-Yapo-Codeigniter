@@ -47,20 +47,19 @@ class Registro extends CI_Controller{
 	}
 
 	//Callback para que sea requerido el checkbox aceptar los terminos
+	public function accept_terms() {
+	    if (isset($_POST['accept_terms'])) return true; 
+	    $this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
+	    return false;
+	}
+
 	// public function accept_terms() {
-	//     if (isset($_POST['accept_terms'])) return true; 
-	//     $this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
-	//     return false;
+	// 	if(!empty($_POST['accept_terms'])) return false;
+	// 	$this->form_validation->set_message('accept_terms', 'Debes Aceptar los Términos y Condiciones');
+ //        return true;
+
 	// }
 
-	public function accept_terms() {
-	    if (isset($_POST['accept_terms'])){
-	    	return true;
-	    }else{
-	    	$this->form_validation->set_message('accept_terms', 'Debes Aceptar los términos y condiciones');
-		    return false;
-	    }
-	}
 
 	public function check_select($city) {
 		if($city == 'xxx'){

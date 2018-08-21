@@ -36,7 +36,7 @@ $('document').ready(function(){
 										'</div>');
 
 					$('#registerForm')[0].reset();
-					$('.text-danger').remove();
+					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
 				}else{
 					$.each(response.messages,function(index,value){
