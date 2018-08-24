@@ -30,14 +30,18 @@ class Registro extends CI_Controller{
 				$validator['messages'][$key] = form_error($key);
 			}
 		}else{
-			//Form Ok
+			//Form Registro Ok
 			$this->load->library('email');
+			$email = $this->input->post('email');
 			if($this->Register_model->insertUser())
 				$validator['success'] = true;
 				
 			$validator['messages'] = "Ok";
 			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');
-			
+			$this->email->to($email);
+			$this->email->subject('Se verifico tu email');
+			$this->email->message('bla bla bla');
+			$this->email->send();
 		}
 
 		echo json_encode($validator);
