@@ -1,4 +1,4 @@
-<div class="container mainRegistro">
+<div class="container mainRegistro" id="mainRegistro">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="titleRegistro">
@@ -11,7 +11,7 @@
 	
 	<!--[FORMULARIO REGISTRO]-->
 	<div id="messages"></div>
-	<form action="<?= base_url() ?>registro/register" id="registerForm" method="post">
+	<form action="<?= base_url() ?>registro/register" id="registerForm" method="post" v-if="formSee">
 		<div class="row">
 			<div class="col-md-6 registerStepOne">
 				<!--[NOMBRE COMPLETO]-->

@@ -12,9 +12,9 @@ class Register_model extends CI_Model{
 		$password = $this->makePassword($this->input->post('password'),$salt);
 
 		$data = array(
-			'fullname'  => ucfirst($this->input->post('fullname')),
+			'fullname'  => ucwords($this->input->post('fullname')),
 			'sex' 	    => $this->input->post('sexo'),
-			'region_id' => $this->input->post('region'),
+			'region_id' => $this->input->post('selectRegion'),
 			'town_id'   => $this->input->post('town'),
 			'phone' 	=> $this->input->post('numberPhone'),
 			'email'		=> $this->input->post('email'),

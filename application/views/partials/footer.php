@@ -27,7 +27,9 @@
 	<!--[/INICIO SESION]-->
 
 	<script src="<?= base_url() ?>public/js/jquery.js"></script>
+	<script src="<?= base_url() ?>public/js/vue.js"></script>
 	<script src="<?= base_url() ?>public/js/bootstrap.min.js"></script>
+	<script src="<?= base_url() ?>public/js/mainVue.js"></script>
 	<script src="<?= base_url() ?>public/js/main.js"></script>
 <!-- 	<script>
 		document.getElementById('btnRegister').addEventListener('click',function(e){

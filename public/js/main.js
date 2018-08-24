@@ -1,3 +1,15 @@
+const app = new Vue({
+  el: '#mainRegistro',
+  data: {
+  	formSee: true
+  }
+  // methods:{
+  //       deleteForm:function(){
+		  
+  //   }
+  // }
+})
+
 $('document').ready(function(){
 	//Set region json :D
 	$('#selectRegion').on('change',function(){
@@ -8,7 +20,7 @@ $('document').ready(function(){
 		});
 		$('#selectTown').empty();
 		$('#selectTown').append('<option>Seleccione Comuna</option>');
-	});
+	});	
 
 	// Type of Phone
 	$('input[type=radio][name=typePhone]').on('change',function(){
@@ -37,12 +49,14 @@ $('document').ready(function(){
 				console.log(response);
 				if(response.success == true){
 					$('#messages').html('<div class="alert alert-success" role="alert">'+
-  											'<strong>Well done!</strong> Registro ok :D'+
+  											'<strong>Registro ok!</strong> Verifica tu cuenta. Te hemos enviado un email de activación al correo indicado.'+
 										'</div>');
 
 					$('#registerForm')[0].reset();
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+
+					app.formSee = false
 				}else{
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
@@ -70,12 +84,19 @@ $('document').ready(function(){
 				console.log(response);
 				if(response.success == true){
 					$('#messages').html('<div class="alert alert-success" role="alert">'+
-  											'<strong>Well done!</strong> Registro ok :D'+
+  											'<strong>Registro ok!</strong> Registro ok :D'+
 										'</div>');
 
 					$('#registerForm')[0].reset();
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+
+					var app = new Vue({
+						el: '#mainRegistro',
+						data:{
+							formSee: false
+						}
+					});
 				}else{
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
@@ -97,39 +118,7 @@ $('document').ready(function(){
 			return false;
 		}
 
-		// $.ajax({
-		// 	url: form.attr('action'),
-		// 	type: form.attr('method'),
-		// 	data: form.serialize(),
-		// 	dataType: 'json',
-		// 	success: function(response){
-		// 		console.log(response);
-		// 		if(response.success == true){
-		// 			$('#messages').html('<div class="alert alert-success" role="alert">'+
-  // 											'<strong>Well done!</strong> Registro ok :D'+
-		// 								'</div>');
-
-		// 			$('#registerForm')[0].reset();
-		// 			$('.alert-warning').remove();
-		// 			$('.form-group').removeClass('alert-warning').removeClass('has-success');
-		// 		}else{
-		// 			$.each(response.messages,function(index,value){
-		// 				var element = $('#'+index);
-
-		// 				$(element)
-		// 					.closest('.form-group')
-		// 					.removeClass('alert-warning')
-		// 					.removeClass('has-success')
-		// 					.addClass(value.length > 0 ? 'has-error':'has-success')
-		// 					.find('.alert-warning').remove();
-
-		// 				$(element).after(value);
-		// 			});
-		// 		}
-		// 	}
-		// });
-
-		// return false;
+		
 	});
 
 

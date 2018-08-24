@@ -31,10 +31,13 @@ class Registro extends CI_Controller{
 			}
 		}else{
 			//Form Ok
+			$this->load->library('email');
 			if($this->Register_model->insertUser())
 				$validator['success'] = true;
 				
 			$validator['messages'] = "Ok";
+			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');
+			
 		}
 
 		echo json_encode($validator);
