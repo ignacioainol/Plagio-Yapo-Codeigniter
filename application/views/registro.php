@@ -138,7 +138,8 @@
 			  <!--[/TERMINOS Y CONDICIONES]-->
 			
 			  <div class="text-center">
-			  	<button type="submit" id="btnRegister" class="btn btn-primary">Registrar</button>
+			  	<button type="submit" id="btnRegister" class="btn btn-primary">Registrar</button><br>
+			  	<img src="<?= base_url() ?>public/img/loading.gif" id="gifload" alt="loading" style="display: none;">
 			  </div>
 			</div>
 		</div>

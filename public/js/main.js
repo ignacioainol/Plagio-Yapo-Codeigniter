@@ -45,8 +45,13 @@ $('document').ready(function(){
 			type: form.attr('method'),
 			data: form.serialize(),
 			dataType: 'json',
+			beforeSend:function(){
+				document.getElementById('btnRegister').style.display = 'none';
+				document.getElementById('gifload').style.display = 'inline';
+			},
 			success: function(response){
 				console.log(response);
+				document.getElementById('gifload').style.display = 'none';
 				if(response.success == true){
 					$('#messages').html('<div class="alert alert-success" role="alert">'+
   											'<strong>Registro ok!</strong> Verifica tu cuenta. Te hemos enviado un email de activación al correo indicado.'+
@@ -58,6 +63,7 @@ $('document').ready(function(){
 
 					app.formSee = false
 				}else{
+					document.getElementById('gifload').style.display = 'inline';
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
 
@@ -80,6 +86,9 @@ $('document').ready(function(){
 			type: form.attr('method'),
 			data: form.serialize(),
 			dataType: 'json',
+			// beforeSend:function(){
+			// 	$('#btnRegister').hide();
+			// },
 			success: function(response){
 				console.log(response);
 				if(response.success == true){
