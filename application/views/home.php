@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<a href="<?= base_url() ?>"><h1 id="mainTitle">Testing Code!</h1></a>
+				<a href="<?= base_url() ?>"><h1 id="mainTitle">Ya Pues!</h1></a>
 				<img src="<?= base_url() ?>public/img/pad.png" alt="">
 			</div>
 			<div class="col-md-6">
