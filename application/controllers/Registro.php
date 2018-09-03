@@ -40,8 +40,8 @@ class Registro extends CI_Controller{
 
 			$arrayName = explode(" ", $name);
 			$data['name'] = ucfirst($arrayName[0]);
-
-				
+			$salt = $this->salt();
+			$data['hash'] = $this->makeHash($name,$salt);
 			$validator['messages'] = "Ok";
 			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');
 			$this->email->to($email);
@@ -54,8 +54,8 @@ class Registro extends CI_Controller{
 		echo json_encode($validator);
 	}
 
-	public function confirm(){
-		$salt = $this->salt();
+	public function confirm($hash){
+		echo "nose";
 	}
 
 	public function salt(){
@@ -63,7 +63,7 @@ class Registro extends CI_Controller{
 	}
 
 	public function makeHash($fullname = null, $salt = null){
-		return hash('sha256',$password.$salt);
+		return hash('sha256',$fullname.$salt);
 	}
 
 	//Retorna un json con las regiones para completar el formulario de Registro

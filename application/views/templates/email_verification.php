@@ -19,5 +19,5 @@
 	<br>
 	<h4>Acabas de crear tu cuenta en <a href="http://yapues.cl">yapues.cl</a>, para utilizarla debes activarla dando click en el sigte link.</h4>
 
-	<a href="<?= base_url().'registro/confirm'  ?>"><?= base_url().'registro/confirm' ?></a>
+	<a href="<?= base_url().'registro/confirm/'. $hash  ?>">ACA</a>
 </div>
