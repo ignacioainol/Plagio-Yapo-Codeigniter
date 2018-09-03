@@ -33,18 +33,37 @@ class Registro extends CI_Controller{
 			//Form Registro Ok
 			$this->load->library('email');
 			$email = $this->input->post('email');
-			if($this->Register_model->insertUser())
+			$name = $this->input->post('fullname');
+			if($this->Register_model->insertUser()){
 				$validator['success'] = true;
+			}
+
+			$arrayName = explode(" ", $name);
+			$data['name'] = ucfirst($arrayName[0]);
+
 				
 			$validator['messages'] = "Ok";
 			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');
 			$this->email->to($email);
 			$this->email->subject('Se verifico tu email');
-			$this->email->message('bla bla bla');
+			$bodyMessage = $this->load->view('templates/email_verification',$data,true);
+			$this->email->message($bodyMessage);
 			$this->email->send();
 		}
 
 		echo json_encode($validator);
+	}
+
+	public function confirm(){
+		$salt = $this->salt();
+	}
+
+	public function salt(){
+		return password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+	}
+
+	public function makeHash($fullname = null, $salt = null){
+		return hash('sha256',$password.$salt);
 	}
 
 	//Retorna un json con las regiones para completar el formulario de Registro
@@ -67,6 +86,15 @@ class Registro extends CI_Controller{
 	public function check_select($city) {
 		if($city == 'xxx'){
 			$this->form_validation->set_message('check_select', 'Debes Seleccionar tu Región');
+            return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function check_town($town) {
+		if($town == 'xxx'){
+			$this->form_validation->set_message('check_town', 'Debes Seleccionar tu Comuna');
             return false;
 		}else{
 			return true;

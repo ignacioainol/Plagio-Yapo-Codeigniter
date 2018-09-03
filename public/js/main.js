@@ -19,7 +19,7 @@ $('document').ready(function(){
 			});
 		});
 		$('#selectTown').empty();
-		$('#selectTown').append('<option>Seleccione Comuna</option>');
+		$('#selectTown').append('<option selected="selected" value="xxx">Seleccione Comuna</option>');
 	});	
 
 	// Type of Phone
@@ -63,7 +63,8 @@ $('document').ready(function(){
 
 					app.formSee = false
 				}else{
-					document.getElementById('gifload').style.display = 'inline';
+					document.getElementById('btnRegister').style.display = 'inline';
+					document.getElementById('gifload').style.display = 'none';
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
 
@@ -107,6 +108,7 @@ $('document').ready(function(){
 						}
 					});
 				}else{
+
 					$.each(response.messages,function(index,value){
 						var element = $('#'+index);
 						console.log(index);

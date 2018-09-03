@@ -38,7 +38,7 @@
 				  <!--[REGION]-->
 				  <div class="form-group regionDiv">
 				  	  <label>Región *</label>
-				      <select id="selectRegion" name="selectRegion" class="form-control">
+				      <select id="selectRegion" name="selectRegion" class="form-control" required="required">
 				      	<option selected="selected" value="xxx">Seleccione Región</option>
 				      	<? foreach($regions as $key => $val): ?>
 				        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
@@ -50,8 +50,8 @@
 				  <!--[COMUNA]-->
 				  <div class="form-group">
 				  	  <label>Comuna</label>
-				      <select id="selectTown" name="town" class="form-control">
-				      	<option selected>Seleccione Comuna</option>
+				      <select id="selectTown" name="selectTown" class="form-control">
+				      	<option selected="selected" value="xxx">Seleccione Comuna</option>
 				      </select>
 				  </div>
 				  <!--[/COMUNA]-->

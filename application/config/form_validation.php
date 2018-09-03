@@ -17,7 +17,12 @@ $config = array(
 			'field' => 'selectRegion',
 			'label' => '...',
 			'rules' => 'required|callback_check_select'
-		),	
+		),
+		array(
+			'field' => 'selectTown',
+			'label' => '...',
+			'rules' => 'required|callback_check_town'
+		),
 		array(
 			'field' => 'numberPhone',
 			'label' => 'Número telefónico',
