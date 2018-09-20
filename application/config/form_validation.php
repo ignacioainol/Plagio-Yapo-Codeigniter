@@ -1,7 +1,6 @@
 <?php
 
 $config = array(
-	//'registro/register' => array(
 	'registro/register' => array(		
 		array(
 			'field' => 'fullname',
@@ -48,5 +47,17 @@ $config = array(
 			'label' => '...',
 			'rules' => 'callback_accept_terms'
 		)
+	),
+	'login/index' => array(
+		array(
+			'field' => 'emailLogin',
+			'label' => 'E-mail',
+			'rules' => 'required|callback_validate_email'
+		),
+		array(
+			'field' => 'passwordLogin',
+			'label' => 'Password',
+			'rules' => 'required'
+		),
 	)
 );

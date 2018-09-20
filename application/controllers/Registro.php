@@ -10,11 +10,17 @@ class Registro extends CI_Controller{
 	}
 
 	public function index(){
-		$data['regions'] = $this->Region_model->getRegions();
-		$this->load->view('partials/main_header');
-		$this->load->view('registro',$data);
-		$this->load->view('partials/footer');
+		if($this->session->userdata('logged_in')){
+			redirect('dashboard');
+		}else{
+			$data['regions'] = $this->Region_model->getRegions();
+			$this->load->view('partials/main_header');
+			$this->load->view('registro',$data);
+			$this->load->view('partials/footer');
+		}
+		
 	}
+
 
 	public function register(){
 		$validator = array(
@@ -32,16 +38,19 @@ class Registro extends CI_Controller{
 		}else{
 			//Form Registro Ok
 			$this->load->library('email');
+
 			$email = $this->input->post('email');
-			$name = $this->input->post('fullname');
-			if($this->Register_model->insertUser()){
+			$name = ucwords($this->input->post('fullname'));
+			$salt = $this->salt();
+			$data['hash'] = $this->makeHash($name,$salt);
+			if($this->Register_model->insertUser($data['hash'])){
+				//$validator['name'] = $name; Ignacio Ainol
 				$validator['success'] = true;
 			}
 
 			$arrayName = explode(" ", $name);
 			$data['name'] = ucfirst($arrayName[0]);
-			$salt = $this->salt();
-			$data['hash'] = $this->makeHash($name,$salt);
+			$data['email'] = $email;
 			$validator['messages'] = "Ok";
 			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');
 			$this->email->to($email);
@@ -54,9 +63,32 @@ class Registro extends CI_Controller{
 		echo json_encode($validator);
 	}
 
-	public function confirm($hash){
-		echo "nose";
+	public function confirm($hash,$email){
+		$emailUrl = $this->uri->segment(4);
+		$hashUrl = $this->uri->segment(3);
+		$dataUser = $this->Register_model->fetchDataUser($emailUrl);
+		$name = $dataUser->fullname;
+		$arrayName = explode(" ", $name);
+		$firstName = ucfirst($arrayName[0]);
+		$salt = $dataUser->salt;
+		$hashUser = $dataUser->hash;
+		$emailUser = $dataUser->email;
+
+		if(($emailUrl === $emailUser) && ($hashUrl === $hashUser))
+			$this->Register_model->status_on($emailUser);
+			$this->load->library('session');
+
+			$sessionData = array(
+        		'name'  => $firstName,
+        		'email'     => $emailUser,
+        		'logged_in' => TRUE
+			);
+
+			$this->session->set_userdata($sessionData);
+			//echo $this->session->userdata('email');
+			redirect('dashboard');
 	}
+
 
 	public function salt(){
 		return password_hash("rasmuslerdorf", PASSWORD_DEFAULT);

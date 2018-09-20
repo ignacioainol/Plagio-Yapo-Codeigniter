@@ -13,6 +13,7 @@ $greenlight: #76ff03;
 	h1#mainTitle{
 		font-family: 'Press Start 2P', cursive;
 		font-size: 1.7em;
+		text-decoration: underline;
 	}
 
 	.table{
@@ -24,6 +25,17 @@ $greenlight: #76ff03;
 		td:hover{
 			background: $greenlight;
 			cursor: pointer;
+		}
+	}
+
+	.logInLogOut{
+		a{
+			text-decoration: none;
+			margin-right: 10px;
+			color: #757575;
+		}
+		a:hover{
+			color:green;
 		}
 	}
 }
@@ -85,4 +97,8 @@ $greenlight: #76ff03;
 			margin-bottom:0 !important;
 		}
 	}
+}
+
+.bodyDashboard{
+	margin-top: 2em;
 }

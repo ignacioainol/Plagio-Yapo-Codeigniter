@@ -1,4 +1,5 @@
 const app = new Vue({
+
   el: '#mainRegistro',
   data: {
   	formSee: true
@@ -8,10 +9,9 @@ const app = new Vue({
 		  
   //   }
   // }
-})
+});
 
 $('document').ready(function(){
-	//Set region json :D
 	$('#selectRegion').on('change',function(){
 		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
@@ -22,7 +22,6 @@ $('document').ready(function(){
 		$('#selectTown').append('<option selected="selected" value="xxx">Seleccione Comuna</option>');
 	});	
 
-	// Type of Phone
 	$('input[type=radio][name=typePhone]').on('change',function(){
 		if(this.value == 'movil'){
 			$('#typePhone').html('<!--[MOVIL]--><div class="form-row" style="margin-bottom: 8px"><div class="col-sm-12"><div class="input-group mb-2"><div class="input-group-prepend"><div class="input-group-text">+569</div></div><input type="text" required onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" placeholder="Ej: 59271861"></div></div></div><!--[/MOVIL]-->');
@@ -31,7 +30,7 @@ $('document').ready(function(){
 		}
 	});
 
-	//Ajax form register :D
+
 	$('#registerForm').unbind('submit').bind('submit',function(){
 		$('#acceptTerminos').on('click',function(){
 			$('#accept_terms')[0].checked = true;
@@ -87,9 +86,6 @@ $('document').ready(function(){
 			type: form.attr('method'),
 			data: form.serialize(),
 			dataType: 'json',
-			// beforeSend:function(){
-			// 	$('#btnRegister').hide();
-			// },
 			success: function(response){
 				console.log(response);
 				if(response.success == true){
@@ -130,6 +126,46 @@ $('document').ready(function(){
 		}
 
 		
+	});
+
+	$('#loginForm').unbind('submit').bind('submit',function(){
+		var form = $(this);
+
+		$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			data: form.serialize(),
+			dataType: 'json',
+			success:function(response){
+				if(response.success == true){
+					$('.alert-warning').remove();
+					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+
+					window.location = response.messages;
+				}else{
+					if(response.messages instanceof Object){
+						$.each(response.messages,function(index,value){
+							var element = $('#'+index);
+
+							$(element)
+								.closest('.form-group')
+								.removeClass('alert-warning')
+								.removeClass('has-success')
+								.addClass(value.length > 0 ? 'has-error':'has-success')
+								.find('.alert-warning').remove();
+
+							$(element).after(value);
+						});
+					}else{
+						//$('#messages').html('mal');
+						
+						$('.alert-warning').remove();
+						$('.form-group').removeClass('alert-warning').removeClass('has-success');
+					}
+				}
+			}
+		});
+		return false;
 	});
 
 
