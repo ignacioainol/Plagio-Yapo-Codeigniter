@@ -1,5 +1,6 @@
-const app = new Vue({
 
+const app = new Vue({
+ 
   el: '#mainRegistro',
   data: {
   	formSee: true
@@ -165,6 +166,24 @@ $('document').ready(function(){
 				}
 			}
 		});
+		return false;
+	});
+
+	$('#logout').unbind('submit').bind('submit',function(){
+		var form = $(this);
+
+		$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			data: form.serialize(),
+			dataType: 'json',
+			success:function(response){
+				console.log(response);
+			}
+
+		});
+
+
 		return false;
 	});
 

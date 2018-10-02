@@ -26,12 +26,35 @@
 	  </div>
 	</div>
 	<!--[/INICIO SESION]-->
+	
+	<? if($this->session->userdata('email')): ?>
+	<!--[/CERRAR SESION]-->
+	<div class="modal fade" id="cerrar_sesion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      	<h5 class="modal-title">Seguro que deseas finalizar?</h5>
+	      	<div id="messages"></div>
+	        <form id="logout" action="dashboard/logout" method="post">
+			  <div class="btnLogin">
+			  	<input type="submit" class="btn btn-success btnEnter" value="Aceptar">
+			  </div>
+			</form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!--[/CERRAR SESION]-->
+	<? endif ?>
 
 	<script src="<?= base_url() ?>public/js/jquery.js"></script>
 	<script src="<?= base_url() ?>public/js/vue.js"></script>
 	<script src="<?= base_url() ?>public/js/bootstrap.min.js"></script>
-	<script src="<?= base_url() ?>public/js/mainVue.js"></script>
+	<!-- <script src="<?= base_url() ?>public/js/mainVue.js"></script> -->
 	<script src="<?= base_url() ?>public/js/main.js"></script>
-	<script src="<?= base_url() ?>public/js/sweet-modal-vue/dist/sweet-modal.js"></script>
+	<!-- <script src="<?= base_url() ?>public/js/sweet-modal-vue/dist/sweet-modal.js"></script> -->
 </body>
 </html>

@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ignacio cyrax",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "sweet-modal-vue": "^2.0.0"
+  }
 }
