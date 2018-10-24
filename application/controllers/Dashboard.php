@@ -7,6 +7,11 @@ class Dashboard extends CI_Controller{
 	}
 
 	public function index(){
+		// if($this->session->userdata('logged_in'))
+		// 	echo "logeado"
+		// else
+		// 	echo "logeatee";
+		
 		$data['email'] = $this->session->userdata('email');
 		$data['name'] = $this->session->userdata('name');
 
