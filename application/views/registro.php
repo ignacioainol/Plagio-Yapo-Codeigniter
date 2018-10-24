@@ -139,7 +139,7 @@
 			
 			  <div class="text-center">
 			  	<button type="submit" id="btnRegister" class="btn btn-primary">Registrar</button><br>
-			  	<img src="<?= base_url() ?>public/img/loading.gif" id="gifload" alt="loading" style="display: none;">
+			  	<img src="<?= base_url() ?>public/img/cuboload.svg" id="gifload" alt="loading" style="display: none;">
 			  </div>
 			</div>
 		</div>

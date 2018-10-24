@@ -7,11 +7,6 @@ class Dashboard extends CI_Controller{
 	}
 
 	public function index(){
-		// if($this->session->userdata('logged_in'))
-		// 	redirect('dashboard');
-		// else
-		// 	redirect('home');
-		
 		$data['email'] = $this->session->userdata('email');
 		$data['name'] = $this->session->userdata('name');
 
@@ -24,6 +19,6 @@ class Dashboard extends CI_Controller{
 		$this->load->library('session');
 		$this->session->sess_destroy();
 
-		echo "logout";
+		redirect();
 	}
 }
