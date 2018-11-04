@@ -17,7 +17,7 @@
 			  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
 			  	<div class="container">
 			  		<div class="row">
-			  			<marquee behavior="" direction="">HELLOWEEN</marquee>
+			  			<p>O Avisos</p>
 			  		</div>
 			  	</div>
 			  </div>

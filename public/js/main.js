@@ -12,6 +12,7 @@ const app = new Vue({
   // }
 });
 
+
 $('document').ready(function(){
 	$('#selectRegion').on('change',function(){
 		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
@@ -30,6 +31,7 @@ $('document').ready(function(){
 			$('#typePhone').html('<!--[FIJO]--><div class="form-group row"><div class="col-sm-2" style="padding-right:0"><input type="text" class="form-control" placeholder="Codigo"></div><div class="col-sm-10"><input type="text" required onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" placeholder="Ej: 23536784"></div></div><!--[/FIJO]-->');
 		}
 	});
+
 
 
 	$('#registerForm').unbind('submit').bind('submit',function(){
@@ -132,6 +134,7 @@ $('document').ready(function(){
 	$('#loginForm').unbind('submit').bind('submit',function(){
 		var form = $(this);
 
+
 		$.ajax({
 			url: form.attr('action'),
 			type: form.attr('method'),
@@ -142,8 +145,11 @@ $('document').ready(function(){
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
 
-					window.location = response.messages;
+					window.location.href = response.messages;
+					// console.log(response);
+					// console.log("sigues bien por ahora :D ");
 				}else{
+					console.log("caes aca vas mal");
 					if(response.messages instanceof Object){
 						$.each(response.messages,function(index,value){
 							var element = $('#'+index);
@@ -169,23 +175,23 @@ $('document').ready(function(){
 		return false;
 	});
 
-	$('#logout').unbind('submit').bind('submit',function(){
-		var form = $(this);
+	// $('#logout').unbind('submit').bind('submit',function(){
+	// 	var form = $(this);
 
-		$.ajax({
-			url: form.attr('action'),
-			type: form.attr('method'),
-			data: form.serialize(),
-			dataType: 'json',
-			success:function(response){
-				console.log(response);
-			}
+	// 	$.ajax({
+	// 		url: form.attr('action'),
+	// 		type: form.attr('method'),
+	// 		data: {'current_uri': $('#current_uri')},
+	// 		//dataType: 'json',
+	// 		success:function(response){
+	// 			console.log(response);
+	// 		}
 
-		});
+	// 	});
 
 
-		return false;
-	});
+	// 	return false;
+	// });
 
 
 });

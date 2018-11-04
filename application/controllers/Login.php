@@ -21,27 +21,26 @@ class Login extends CI_Controller{
 			foreach ($_POST as $key => $value) {
 				$validator['messages'][$key] = form_error($key);
 			}
-
 		}else{
 			$login = $this->Login_model->login();
-
 			if($login){
-
 				$this->load->library('session');
 
-				$dataSession = array(
-					'user_id' => $login,
-					'loged_in' => TRUE
+				$arrayName = explode(" ", $login['fullname']);
+				$firstName = ucfirst($arrayName[0]);
+
+				$sessionData = array(
+					'user_id' => $login['user_id'],
+					'name'  => $firstName,
+        			'email'     => $login['email'],
+					'logged_in' => TRUE
 				);
+
+				$this->session->set_userdata($sessionData);
 
 				$validator['success'] = true;
 				$validator['messages'] = base_url()."/home";
-
-			}else{
-				$validator['success'] = false;
-				$validator['messages'] = "Email o contraseña incorrecto(s)";
 			}
-
 		}
 
 		echo json_encode($validator);

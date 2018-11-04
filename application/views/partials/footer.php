@@ -40,6 +40,7 @@
 	      	<div id="messages"></div>
 	        <form id="logout" action="dashboard/logout" method="post">
 			  <div class="btnLogin">
+			  	<input type="hidden" name="current_uri" id="current_uri" value="<?= base_url(uri_string())  ?>">
 			  	<input type="submit" class="btn btn-success btnEnter" value="Aceptar">
 			  </div>
 			</form>

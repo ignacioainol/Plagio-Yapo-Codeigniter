@@ -43,7 +43,8 @@ class Login_model extends CI_Model{
 			$query = $this->db->get('users');
 			$result = $query->row_array();
 			
-			return ($query->num_rows() == 1) ? $result['user_id'] : false;
+			//return ($query->num_rows() == 1) ? $result['user_id'] : false;
+			return ($query->num_rows() == 1) ? $result : false;
 		}else{
 			return false;
 		}
