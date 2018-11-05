@@ -8,13 +8,19 @@
 	        </button>
 	      	<h5 class="modal-title">Inicio de Sesión</h5>
 	      	<div id="messages"></div>
-	        <form id="loginForm" action="login" method="post">
+	        <form id="loginForm" action="<?= base_url() ?>login" method="post">
+	          <!--[EMAIL DE INICIO DE SESION]-->
 			  <div class="form-group">
-			    <input type="email" class="form-control" id="emailLogin" name="emailLogin" placeholder="Ingrese su correo">
+			    <input type="email" value="<?= set_value('emailLogin') ?>" class="form-control" id="emailLogin" name="emailLogin" placeholder="Ingrese su correo">
 			  </div>
+			  <!--[/EMAIL DE INICIO DE SESION]-->
+
+			  <!--[PASSWORD DE INICIO DE SESION]-->
 			  <div class="form-group">
 			    <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Ingresa tu Contraseña">
 			  </div>
+			  <!--[/PASSWORD DE INICIO DE SESION]-->
+
 			  <div class="btnLogin">
 			  	<small><a href="">¿ Olvidaste tu contraseña ?</a></small>
 			  	<input type="submit" class="btn btn-danger btnEnter" value="Entrar">

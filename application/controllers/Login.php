@@ -10,7 +10,7 @@ class Login extends CI_Controller{
 
 	public function index(){
 		$validator = array(
-			'success' => 'false',
+			'success' => false,
 			'messages' => array()
 		);
 
@@ -23,24 +23,23 @@ class Login extends CI_Controller{
 			}
 		}else{
 			$login = $this->Login_model->login();
+
 			if($login){
 				$this->load->library('session');
 
-				$arrayName = explode(" ", $login['fullname']);
-				$firstName = ucfirst($arrayName[0]);
-
-				$sessionData = array(
-					'user_id' => $login['user_id'],
-					'name'  => $firstName,
-        			'email'     => $login['email'],
-					'logged_in' => TRUE
+				$dataSession = array(
+					'user_id' => $login,
+					'loged_in' => TRUE
 				);
-
-				$this->session->set_userdata($sessionData);
 
 				$validator['success'] = true;
 				$validator['messages'] = base_url()."/home";
+			}else{
+				$validator['success'] = false;
+				$validator['messages'] = "Email o contraseña incorrecto(s)";
+
 			}
+
 		}
 
 		echo json_encode($validator);

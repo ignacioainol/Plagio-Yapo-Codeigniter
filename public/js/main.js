@@ -134,65 +134,35 @@ $('document').ready(function(){
 	$('#loginForm').unbind('submit').bind('submit',function(){
 		var form = $(this);
 
-
 		$.ajax({
 			url: form.attr('action'),
 			type: form.attr('method'),
 			data: form.serialize(),
 			dataType: 'json',
-			success:function(response){
+			success: function(response){
 				if(response.success == true){
-					$('.alert-warning').remove();
-					$('.form-group').removeClass('alert-warning').removeClass('has-success');
-
 					window.location.href = response.messages;
-					// console.log(response);
-					// console.log("sigues bien por ahora :D ");
 				}else{
-					console.log("caes aca vas mal");
-					if(response.messages instanceof Object){
-						$.each(response.messages,function(index,value){
-							var element = $('#'+index);
-
-							$(element)
-								.closest('.form-group')
-								.removeClass('alert-warning')
-								.removeClass('has-success')
-								.addClass(value.length > 0 ? 'has-error':'has-success')
-								.find('.alert-warning').remove();
-
-							$(element).after(value);
-						});
-					}else{
-						//$('#messages').html('mal');
+					$.each(response.messages,function(index,value){
+						var element = $('#'+index);
 						
-						$('.alert-warning').remove();
-						$('.form-group').removeClass('alert-warning').removeClass('has-success');
-					}
+
+						$(element)
+							.closest('.form-group')
+							.removeClass('alert-warning')
+							.removeClass('has-success')
+							.addClass(value.length > 0 ? 'has-error':'has-success')
+							.find('.alert-warning').remove();
+
+						$(element).after(value);
+					});
 				}
 			}
-		});
-		return false;
+
+		})
+
+		 return false;
 	});
-
-	// $('#logout').unbind('submit').bind('submit',function(){
-	// 	var form = $(this);
-
-	// 	$.ajax({
-	// 		url: form.attr('action'),
-	// 		type: form.attr('method'),
-	// 		data: {'current_uri': $('#current_uri')},
-	// 		//dataType: 'json',
-	// 		success:function(response){
-	// 			console.log(response);
-	// 		}
-
-	// 	});
-
-
-	// 	return false;
-	// });
-
 
 });
 

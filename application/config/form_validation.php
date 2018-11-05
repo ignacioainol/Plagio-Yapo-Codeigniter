@@ -52,12 +52,12 @@ $config = array(
 		array(
 			'field' => 'emailLogin',
 			'label' => 'E-mail',
-			'rules' => 'required|callback_validate_email'
+			'rules' => 'callback_validate_email|required'
 		),
 		array(
 			'field' => 'passwordLogin',
 			'label' => 'Password',
 			'rules' => 'required'
-		),
+		)
 	)
 );
