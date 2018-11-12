@@ -7,7 +7,7 @@
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      	<h5 class="modal-title">Inicio de Sesión</h5>
-	      	<div id="messages"></div>
+	      	<div id="messagesLogin"></div>
 	        <form id="loginForm" action="<?= base_url() ?>login" method="post">
 	          <!--[EMAIL DE INICIO DE SESION]-->
 			  <div class="form-group">

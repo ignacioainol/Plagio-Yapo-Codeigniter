@@ -21,7 +21,7 @@ class Login_model extends CI_Model{
 	public function fetchDataByEmail($email = null){
 		if($email){
 			$this->db->where('email',$email);
-			$this->db->select('user_id,salt');
+			$this->db->select('user_id,fullname,salt');
 			$query = $this->db->get('users');
 			$result = $query->row_array();
 			return ($query->num_rows() == 1) ? $result : false;

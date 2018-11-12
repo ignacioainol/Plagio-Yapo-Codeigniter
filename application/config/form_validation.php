@@ -52,7 +52,7 @@ $config = array(
 		array(
 			'field' => 'emailLogin',
 			'label' => 'E-mail',
-			'rules' => 'callback_validate_email|required'
+			'rules' => 'required|callback_validate_email'
 		),
 		array(
 			'field' => 'passwordLogin',

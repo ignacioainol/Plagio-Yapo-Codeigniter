@@ -141,21 +141,38 @@ $('document').ready(function(){
 			dataType: 'json',
 			success: function(response){
 				if(response.success == true){
+					$('.alert-warning').remove();
+					$('.form-group').removeClass('alert-warning').removeClass('has-success');
 					window.location.href = response.messages;
 				}else{
-					$.each(response.messages,function(index,value){
-						var element = $('#'+index);
+
+					if(response.messages instanceof Object){
+						$.each(response.messages,function(index,value){
+							var element = $('#'+index);
+							
+
+							$(element)
+								.closest('.form-group')
+								.removeClass('alert-warning')
+								.removeClass('has-success')
+								.addClass(value.length > 0 ? 'has-error':'has-success')
+								.find('.alert-warning').remove();
+
+							$(element).after(value);
+						  });
+						
+					}else{
+						console.log(response.messages);
+						$('.alert-warning').remove();
+						$('.form-group').removeClass('alert-warning').removeClass('has-success');
+						
+						$('#messagesLogin').html("<div class='alert alert-warning' role='alert'>" +
+  							response.messages +
+						"</div>");
 						
 
-						$(element)
-							.closest('.form-group')
-							.removeClass('alert-warning')
-							.removeClass('has-success')
-							.addClass(value.length > 0 ? 'has-error':'has-success')
-							.find('.alert-warning').remove();
+					}
 
-						$(element).after(value);
-					});
 				}
 			}
 

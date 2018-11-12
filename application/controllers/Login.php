@@ -10,36 +10,58 @@ class Login extends CI_Controller{
 
 	public function index(){
 		$validator = array(
-			'success' => false,
+			'success'  => false,
 			'messages' => array()
 		);
 
+		$validate_data = array(
+			array(
+			'field' => 'emailLogin',
+			'label' => 'E-mail',
+			'rules' => 'required|callback_validate_email'
+			),
+			array(
+				'field' => 'passwordLogin',
+				'label' => 'Password',
+				'rules' => 'required'
+			)
+		);
+
+		$this->form_validation->set_rules($validate_data);
 		$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">','</div>');
 
-		if($this->form_validation->run() === FALSE){
-			$validator['success'] = false;
-			foreach ($_POST as $key => $value) {
-				$validator['messages'][$key] = form_error($key);
-			}
-		}else{
+		if($this->form_validation->run() === TRUE){
+
 			$login = $this->Login_model->login();
 
 			if($login){
 				$this->load->library('session');
 
-				$dataSession = array(
-					'user_id' => $login,
-					'loged_in' => TRUE
+				$arrayName = explode(" ", $login['fullname']);
+				$firstName = ucfirst($arrayName[0]);
+				$email 	   = $this->input->post('emailLogin');
+
+
+				$sessionData = array(
+					'name'  => $firstName,
+        			'email'     => $email,
+        			'logged_in' => TRUE
 				);
 
+				$this->session->set_userdata($sessionData);
+
 				$validator['success'] = true;
-				$validator['messages'] = base_url()."/home";
+				$validator['messages'] = 'currentUrl';
+				$validator['user_id'] = $login['user_id'];
 			}else{
 				$validator['success'] = false;
-				$validator['messages'] = "Email o contraseña incorrecto(s)";
-
+				$validator['messages'] = "Incorrecto E-mail o Contraseña";
 			}
-
+		}else{
+			$validator['success'] = false;
+			foreach ($_POST as $key => $value) {
+				$validator['messages'][$key] = form_error($key);
+			}
 		}
 
 		echo json_encode($validator);
