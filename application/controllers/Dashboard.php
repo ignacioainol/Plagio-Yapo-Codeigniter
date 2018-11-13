@@ -7,17 +7,18 @@ class Dashboard extends CI_Controller{
 	}
 
 	public function index(){
-		// if($this->session->userdata('logged_in'))
-		// 	echo "logeado"
-		// else
-		// 	echo "logeatee";
-		
-		$data['email'] = $this->session->userdata('email');
-		$data['name'] = $this->session->userdata('name');
+		if($this->session->userdata('logged_in')){
+			$data['email'] = $this->session->userdata('email');
+			$data['name'] = $this->session->userdata('name');
 
-		$this->load->view('partials/main_header',$data);
-		$this->load->view('dashboard');
-		$this->load->view('partials/footer');
+			$this->load->view('partials/main_header',$data);
+			$this->load->view('dashboard');
+			$this->load->view('partials/footer');
+		}
+		else{
+			redirect(base_url());
+		}
+		
 	}
 
 	public function logout(){
