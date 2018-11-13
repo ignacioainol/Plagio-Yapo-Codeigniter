@@ -181,6 +181,24 @@ $('document').ready(function(){
 		 return false;
 	});
 
+	$('#logout').unbind('submit').bind('submit',function(){
+		var form = $(this);
+		
+		$.ajax({ 
+			url: form.attr('action'),
+			type: form.attr('method'),
+			data: form.serialize(),
+			dataType: 'json',
+			success: function(response){
+				if(response.success == true){
+					window.location.href = response.messages;
+				}
+			}
+		});
+	});
+
+	return false;
+
 });
 
 function textonly(e){

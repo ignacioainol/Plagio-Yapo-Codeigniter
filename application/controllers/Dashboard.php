@@ -21,11 +21,13 @@ class Dashboard extends CI_Controller{
 	}
 
 	public function logout(){
-		// $this->load->library('session');
-		// $this->session->sess_destroy();
+		$this->load->library('session');
+		$this->session->sess_destroy();
 
-		//echo $this->input->post('current_uri');
-		//redirect(base_url());
+		$validator['success']  = true;
+		$validator['messages'] = $this->input->post('current_uri_close');
+		
+		echo json_encode($validator);
 
 	}
 }

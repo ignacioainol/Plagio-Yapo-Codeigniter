@@ -9,6 +9,7 @@
 	      	<h5 class="modal-title">Inicio de Sesión</h5>
 	      	<div id="messagesLogin"></div>
 	        <form id="loginForm" action="<?= base_url() ?>login" method="post">
+	          <input type="hidden" name="current_uri" id="current_uri" value="<?= base_url(uri_string())  ?>">
 	          <!--[EMAIL DE INICIO DE SESION]-->
 			  <div class="form-group">
 			    <input type="email" value="<?= set_value('emailLogin') ?>" class="form-control" id="emailLogin" name="emailLogin" placeholder="Ingrese su correo">
@@ -44,9 +45,9 @@
 	        </button>
 	      	<h5 class="modal-title">Seguro que deseas finalizar?</h5>
 	      	<div id="messages"></div>
-	        <form id="logout" action="dashboard/logout" method="post">
+	        <form id="logout" action="<?= base_url() ?>dashboard/logout" method="post">
 			  <div class="btnLogin">
-			  	<input type="hidden" name="current_uri" id="current_uri" value="<?= base_url(uri_string())  ?>">
+			  	<input type="hidden" name="current_uri_close" id="current_uri_close" value="<?= base_url(uri_string())  ?>">
 			  	<input type="submit" class="btn btn-success btnEnter" value="Aceptar">
 			  </div>
 			</form>

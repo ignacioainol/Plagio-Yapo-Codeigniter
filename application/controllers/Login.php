@@ -51,7 +51,7 @@ class Login extends CI_Controller{
 				$this->session->set_userdata($sessionData);
 
 				$validator['success'] = true;
-				$validator['messages'] = 'currentUrl';
+				$validator['messages'] = $this->input->post('current_uri');
 				$validator['user_id'] = $login['user_id'];
 			}else{
 				$validator['success'] = false;
