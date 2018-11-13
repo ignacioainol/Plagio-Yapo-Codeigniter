@@ -14,7 +14,9 @@
 						<button class="btn btn-outline-info">Publica tu Aviso</button>
 					</div>
 				<? else: ?>
-					<button class="btn btn-outline-info">Publica tu Aviso</button>
+					<form action="">
+						<button class="btn btn-outline-info">Publica tu Aviso</button>
+					</form>
 					<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#inicio_sesion">Iniciar Sesion <i class="fas fa-user"></i></button>
 				<? endif ?>
 				<!--[REGIONES]-->
