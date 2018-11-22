@@ -11,4 +11,10 @@ class Category_model extends CI_Model{
 
 		return $query->result();
 	}
+
+	public function getSubCategories(){
+		$query = $this->db->get('categories');
+
+		return $query->result();
+	}
 }

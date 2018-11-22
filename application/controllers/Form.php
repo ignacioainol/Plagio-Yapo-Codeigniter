@@ -9,7 +9,8 @@ class Form extends CI_Controller{
 
 	public function index(){
 
-		$data['catParents'] = $this->Category_model->getCatParents();
+		$data['catParents']    = $this->Category_model->getCatParents();
+		$data['subCategories'] = $this->Category_model->getSubCategories();
 
 		if($this->session->userdata('logged_in')){
 			$data['email'] = $this->session->userdata('email');

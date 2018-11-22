@@ -6,11 +6,15 @@
 				<p>Tu aviso será revisado por nuestro equipo y será publicado si cumple con las reglas de yapo.cl</p>
 				<div class="form-group">
 				    <select class="form-control" id="exampleFormControlSelect1">
-				      <option>1</option>
-				      <option>2</option>
-				      <option>3</option>
-				      <option>4</option>
-				      <option>5</option>
+				    	<option value=""> [[ Seleccione una categoría ]] </option>
+				    	<? foreach ($catParents as $key => $catParent): ?>
+				    		<option disabled value="<?= $catParent->type_cat_id ?>">[[ <?= $catParent->type_cat_name ?> ]]</option>
+				    		<? foreach($subCategories as $key => $subCat): ?>
+				    			<? if($subCat->type_cat_id == $catParent->type_cat_id): ?>
+				    			<option value="<?= $subCat->category_id ?>"> &nbsp;&nbsp;&nbsp;<?= $subCat->category_name ?></option>
+				    			<? endif ?>
+				    		<? endforeach ?>
+				    	<? endforeach ?>
 				    </select>
 				  </div>
 				  <div class="form-group">
@@ -23,7 +27,6 @@
 				  </div>
 				  <button type="submit" class="btn btn-primary">Submit</button>
 				</form>
-				<?php echo "<pre>";print_r($catParents); ?>
 			</div>
 	</div>
 </dic>
