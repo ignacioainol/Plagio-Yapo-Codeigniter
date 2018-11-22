@@ -11,12 +11,10 @@
 						<a href="<?= base_url() ?>dashboard">Hola <?= $name ?>!</a>
 						<a href="#"><i class="fas fa-envelope fa-lg"></i></a>
 						<a href="#" data-toggle="modal" data-target="#cerrar_sesion"><i class="fas fa-power-off fa-lg"></i> Cerrar Sesión</a>
-						<button class="btn btn-outline-info">Publica tu Aviso</button>
+						<a href="<?= base_url() ?>form"><button class="btn btn-outline-info">Publica tu Aviso</button></a>
 					</div>
 				<? else: ?>
-					<form action="">
-						<button class="btn btn-outline-info">Publica tu Aviso</button>
-					</form>
+					<a href="<?= base_url() ?>form"><button class="btn btn-outline-info">Publica tu Aviso</button></a>
 					<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#inicio_sesion">Iniciar Sesion <i class="fas fa-user"></i></button>
 				<? endif ?>
 				<!--[REGIONES]-->
