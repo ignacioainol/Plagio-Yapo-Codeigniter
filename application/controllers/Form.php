@@ -18,12 +18,78 @@ class Form extends CI_Controller{
 			$data['email'] = $this->session->userdata('email');
 			$data['name'] = $this->session->userdata('name');
 			$this->load->view('partials/main_header',$data);
-			$this->load->view('partials/form_post',$data);
+			$this->load->view('form_post',$data);
 			$this->load->view('partials/footer');
 		}else{
 			$this->load->view('partials/main_header');
-			$this->load->view('partials/form_post',$data);
+			$this->load->view('form_post',$data);
 			$this->load->view('partials/footer');
+		}
+	}
+
+	public function newPost(){
+		$validator = array(
+			'success' => false,
+			'messages' => array()
+		);
+
+		$validate_data = array(
+			array(
+				'field' => 'selectCategory',
+				'label' => 'Categoría',
+				'rules' => 'required|callback_check_category'
+			),
+			array(
+				'field' => 'titlePost',
+				'label' => 'Título',
+				'rules' => 'trim|required|min_length[6]|max_length[100]'
+			),
+			array(
+				'field' => 'descriptionPost',
+				'label' => 'Descripción',
+				'rules' => 'trim|required|min_length[6]|max_length[100]'	
+			)
+		);
+
+		$this->form_validation->set_rules($validate_data);
+		$this->form_validation->set_error_delimiters('<div class="alert alert-warning" role="alert">','</div>');
+
+		if($this->form_validation->run() === FALSE){
+			$validator['success'] = false;
+			foreach ($_POST as $key => $value) {
+				$validator['messages'][$key] = form_error($key);
+			}
+		}else{
+			$validator['success'] = true;
+		}
+
+		echo json_encode($validator);
+	}
+
+	public function check_category($category) {
+		if($category == 'xxx'){
+			$this->form_validation->set_message('check_category', 'Debes Seleccionar una Categoría');
+            return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function check_select($city) {
+		if($city == 'xxx'){
+			$this->form_validation->set_message('check_select', 'Debes Seleccionar tu Región');
+            return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function check_town($town) {
+		if($town == 'xxx'){
+			$this->form_validation->set_message('check_town', 'Debes Seleccionar tu Comuna');
+            return false;
+		}else{
+			return true;
 		}
 	}
 }

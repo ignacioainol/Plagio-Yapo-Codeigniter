@@ -99,9 +99,10 @@
 				  </div>
 				<!--[/MOVIL]-->
 			  </div>
+			  <!--[/TYPE PHONE]-->
+			  
 			  <!--[/TELEFONO]-->
 
-			  <!--[/TYPE PHONE]-->
 
 			  <!--[EMAIL]-->
 			  <div class="form-group">

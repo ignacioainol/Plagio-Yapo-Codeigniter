@@ -32,6 +32,14 @@ $('document').ready(function(){
 		}
 	});
 
+	$('input[type=radio][name=typePhonePost]').on('change',function(){
+		if(this.value == 'movil'){
+			$('#typePhone').html('<!--[MOVIL]--><div class="form-row" style="margin-bottom: 8px"><div class="col-sm-12"><div class="input-group mb-2"><div class="input-group-prepend"><div class="input-group-text">+569</div></div><input type="text" required onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" placeholder="Ej: 59271861"></div></div></div><!--[/MOVIL]-->');
+		}else if(this.value == 'fijo'){
+			$('#typePhone').html('<!--[FIJO]--><div class="form-group row"><div class="col-sm-3" style="padding-right:0"><input type="text" class="form-control" placeholder="Codigo"></div><div class="col-sm-9"><input type="text" required onkeypress="return validateNumber(event)" class="form-control numberPhone" name="numberPhone" placeholder="Ej: 23536784"></div></div><!--[/FIJO]-->');
+		}
+	});
+
 
 
 	$('#registerForm').unbind('submit').bind('submit',function(){
@@ -179,6 +187,54 @@ $('document').ready(function(){
 		})
 
 		 return false;
+	});
+
+	$('#newpost').unbind('submit').bind('submit',function(){
+		//alert("wena wena");
+		var form = $(this);
+
+		$.ajax({
+			url: form.attr('action'),
+			type: form.attr('method'),
+			data: form.serialize(),
+			dataType: 'json',
+			success: function(response){
+				if(response.success == true){
+					$('.alert-warning').remove();
+					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+				}else{
+					if(response.messages instanceof Object){
+						$.each(response.messages,function(index,value){
+							var element = $('#'+index);
+							
+
+							$(element)
+								.closest('.form-group')
+								.removeClass('alert-warning')
+								.removeClass('has-success')
+								.addClass(value.length > 0 ? 'has-error':'has-success')
+								.find('.alert-warning').remove();
+
+							$(element).after(value);
+						  });
+						
+					}else{
+						console.log(response.messages);
+						$('.alert-warning').remove();
+						$('.form-group').removeClass('alert-warning').removeClass('has-success');
+						
+						$('#messagesLogin').html("<div class='alert alert-warning' role='alert'>" +
+  							response.messages +
+						"</div>");
+						
+
+					}
+				}
+			}
+
+		});
+
+		return false;
 	});
 
 	$('#logout').unbind('submit').bind('submit',function(){
