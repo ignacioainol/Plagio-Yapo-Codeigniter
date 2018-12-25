@@ -29,7 +29,10 @@
 					  </div>
 					  <div class="form-group">
 					    <label>Precio $</label>
-					    <input type="text" name="pricePost" onkeypress="return validateNumber(event)" class="form-control">
+					    <input type="text" name="pricePost" id="pricePost" onkeypress="return validateNumber(event)" class="form-control">
+					  </div>
+					  <div class="form-group">
+						
 					  </div>
 
 				</div>
@@ -39,7 +42,7 @@
 					<!--[REGION]-->
 					<div class="form-group">
 						<label>Región *</label>
-						<select id="selectRegion" name="selectRegionPost" class="form-control" required="required">
+						<select id="selectRegion" name="selectRegion" class="form-control" required="required">
 							<option selected="selected" value="xxx">Seleccione Región</option>
 							<? foreach($regions as $key => $val): ?>
 					        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
@@ -51,7 +54,7 @@
 				  <!--[COMUNA]-->
 				  <div class="form-group">
 				  	  <label>Comuna</label>
-				      <select id="selectTown" name="selectTownPost" class="form-control">
+				      <select id="selectTown" name="selectTown" class="form-control">
 				      	<option selected="selected" value="xxx">Seleccione Comuna</option>
 				      </select>
 				  </div>
@@ -64,13 +67,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Nombre *</label>
-					    		<input name="nameUserPost" type="text" class="form-control" placeholder="Ingresar Título">
+					    		<input name="nameUserPost" id="nameUserPost" type="text" class="form-control" placeholder="Ingresa tu Nombre">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>E-mail *</label>
-					    		<input name="emailUserPost" type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+					    		<input name="emailUserPost" id="emailUserPost" type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
 							</div>
 						</div>
 					</div>
@@ -79,7 +82,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Confirmar e-mail *</label>
-					    		<input type="email" name="emailUserConfirmPost" class="form-control" placeholder="Confirmar E-mail">
+					    		<input type="email" name="emailUserConfirmPost" id="emailUserConfirmPost" class="form-control" placeholder="Confirmar E-mail">
 							</div>
 						</div>
 						<!--[TELEPHONE HERE]-->
@@ -124,13 +127,13 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Contraseña *</label>
-					    		<input type="password" name="passwordUserPost" class="form-control" placeholder="*********">
+					    		<input type="password" name="passwordUserPost" id="passwordUserPost" class="form-control" placeholder="*********">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Confirmar Contraseña</label>
-					    		<input type="password" name="passwordUserConfirmPost" class="form-control" placeholder="*********">
+					    		<input type="password" name="passwordUserConfirmPost" id="passwordUserConfirmPost" class="form-control" placeholder="*********">
 							</div>
 						</div>
 					</div>

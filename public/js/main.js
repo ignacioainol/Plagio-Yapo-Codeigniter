@@ -202,6 +202,7 @@ $('document').ready(function(){
 				if(response.success == true){
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+					
 				}else{
 					if(response.messages instanceof Object){
 						$.each(response.messages,function(index,value){
