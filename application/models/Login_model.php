@@ -51,6 +51,22 @@ class Login_model extends CI_Model{
 
 	}
 
+	public function getPhone($email){
+		$this->db->select('phone');
+		$this->db->where('email',$email);
+		$query = $this->db->get('users');
+		$result = $query->row_array();
+		return $result['phone'];
+	}
+
+	public function getIdUser($email){
+		$this->db->select('user_id');
+		$this->db->where('email',$email);
+		$query = $this->db->get('users');
+		$result = $query->row_array();
+		return $result['user_id'];
+	}
+
 	public function makePassword($password = null, $salt = null){
 		return hash('sha256',$password.$salt);
 	}

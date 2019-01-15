@@ -6,6 +6,7 @@ class Form extends CI_Controller{
 		parent::__construct();
 	   $this->load->model('Category_model');
 	   $this->load->model('Region_model');
+	   $this->load->model('Form_model');
 	}
 
 	public function index(){
@@ -17,6 +18,9 @@ class Form extends CI_Controller{
 		if($this->session->userdata('logged_in')){
 			$data['email'] = $this->session->userdata('email');
 			$data['name'] = $this->session->userdata('name');
+			$data['fullname'] = $this->session->userdata('fullname');
+			$data['phone'] = $this->session->userdata('phone');
+			$data['id_user'] = $this->session->userdata('id_user');
 			$this->load->view('partials/main_header',$data);
 			$this->load->view('form_post',$data);
 			$this->load->view('partials/footer');
@@ -110,8 +114,20 @@ class Form extends CI_Controller{
 				$validator['messages'][$key] = form_error($key);
 			}
 		}else{
-			
+			//Form Post Ok
+			$category 	  = $this->input->post('selectCategory');
+			$title    	  = $this->input->post('titlePost');
+			$description  = $this->input->post('descriptionPost');
+			$price 		  = $this->input->post('pricePost');
+			$region 	  = $this->input->post('selectRegion');
+			$town 		  = $this->input->post('selectTown');
+			$id_user	  = $this->input->post('id_user');
+
+			$this->Form_model->createNewPost();
+
+
 			$validator['success'] = true;
+
 		}
 
 		echo json_encode($validator);

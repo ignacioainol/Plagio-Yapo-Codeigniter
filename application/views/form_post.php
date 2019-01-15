@@ -3,6 +3,9 @@
 		<form action="<?= base_url() ?>form/newpost" id="newpost" method="post">
 			<div class="row">
 				<div class="col-xl-6 col-md-12 col-lg-12">
+					<? if($this->session->userdata('logged_in')): ?>
+						<input type="hidden" value="<?= $id_user ?>" name="id_user">
+					<? endif ?>
 					<h4>Publica tu aviso!</h4>
 					<p>Tu aviso será revisado por nuestro equipo y será publicado si cumple con las reglas de Yapues.cl</p>
 					<div class="form-group">
@@ -60,8 +63,20 @@
 				  </div>
 				  <!--[/COMUNA]-->
 				
-				  <!--[USER]-->
+				  <!--[/USER]-->
 					<h5><i class="far fa-user"></i> Tu información</h5>
+					
+					<? if($this->session->userdata('logged_in')): ?>
+					<!--[USER]-->
+					<div class="row" style="margin-top: 2em">
+						<div class="col-md-12">
+							<label class="labelUser"><strong><i class="far fa-user"></i> Nombre: </strong> <?= $fullname ?></label><br>
+							<label class="labelUser"><strong><i class="fas fa-at"></i> E-mail: </strong> <?= $email ?></label><br>
+							<label class="labelUser"><strong><i class="fas fa-mobile-alt"></i> Teléfono: </strong> <?= $phone ?></label>
+						</div>
+					</div>
+					<!--[/USER]-->
+					<? else: ?>
 
 					<div class="row">
 						<div class="col-md-6">
@@ -137,6 +152,10 @@
 							</div>
 						</div>
 					</div>
+
+
+					<? endif ?>
+
 
 				  <!--[/USER]-->
 

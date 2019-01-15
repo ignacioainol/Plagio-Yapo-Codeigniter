@@ -41,6 +41,7 @@ class Registro extends CI_Controller{
 
 			$email = $this->input->post('email');
 			$name = ucwords($this->input->post('fullname'));
+			$fullname = $this->input->post('fullname');
 			$salt = $this->salt();
 			$data['hash'] = $this->makeHash($name,$salt);
 			if($this->Register_model->insertUser($data['hash'])){

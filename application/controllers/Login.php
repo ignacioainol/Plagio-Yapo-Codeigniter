@@ -39,12 +39,18 @@ class Login extends CI_Controller{
 
 				$arrayName = explode(" ", $login['fullname']);
 				$firstName = ucfirst($arrayName[0]);
+				$fullname  = $login['fullname'];
 				$email 	   = $this->input->post('emailLogin');
+				$phone 	   = $this->Login_model->getPhone($email);
+				$id_user   = $this->Login_model->getIdUser($email);
 
 
 				$sessionData = array(
-					'name'  => $firstName,
+					'id_user'   => $id_user,
+					'name'      => $firstName,
         			'email'     => $email,
+        			'fullname'  => $fullname,
+        			'phone'     => $phone,
         			'logged_in' => TRUE
 				);
 

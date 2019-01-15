@@ -1,16 +1,14 @@
+//var pathname = window.location.pathname;
 
-const app = new Vue({
+//if(pathname == '/yapues/registro'){
+	const app = new Vue({
  
-  el: '#mainRegistro',
-  data: {
-  	formSee: true
-  }
-  // methods:{
-  //       deleteForm:function(){
-		  
-  //   }
-  // }
-});
+	  el: '#mainRegistro',
+	  data: {
+	  	formSee: true
+	  }
+	});	
+//}
 
 
 $('document').ready(function(){
@@ -190,7 +188,6 @@ $('document').ready(function(){
 	});
 
 	$('#newpost').unbind('submit').bind('submit',function(){
-		//alert("wena wena");
 		var form = $(this);
 
 		$.ajax({
@@ -202,6 +199,8 @@ $('document').ready(function(){
 				if(response.success == true){
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
+
+					console.log(response);
 					
 				}else{
 					if(response.messages instanceof Object){
@@ -227,7 +226,6 @@ $('document').ready(function(){
 						$('#messagesLogin').html("<div class='alert alert-warning' role='alert'>" +
   							response.messages +
 						"</div>");
-						
 
 					}
 				}
