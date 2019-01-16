@@ -173,7 +173,7 @@
 			  <!--[/TERMINOS Y CONDICIONES]-->
 			
 			  <div class="text-center">
-			  	<button type="submit" id="btnRegister" class="btn btn-success">Publicar</button><br>
+			  	<button type="submit" id="btnPost" class="btn btn-success">Publicar</button><br>
 			  	<img src="<?= base_url() ?>public/img/cuboload.svg" id="gifload" alt="loading" style="display: none;">
 			  </div>
 			</div>

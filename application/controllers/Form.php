@@ -154,8 +154,8 @@ class Form extends CI_Controller{
 		}else{
 			//Form Post Ok
 
-			$validator['id_user'] = $this->input->post('id_user');
 			$validator['success'] = true;
+			//$validator['id_user'] = $this->input->post('id_user');
 
 			$id_user         = $this->input->post('id_user');
 			$category_id     = $this->input->post('selectCategory');

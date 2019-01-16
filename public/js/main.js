@@ -196,11 +196,17 @@ $('document').ready(function(){
 			type: form.attr('method'),
 			data: form.serialize(),
 			dataType: 'json',
+			beforeSend:function(){
+				document.getElementById('btnPost').style.display = 'none';
+				document.getElementById('gifload').style.display = 'inline';
+			},
 			success: function(response){
+				document.getElementById('btnPost').style.display = 'inline';
+				document.getElementById('gifload').style.display = 'none';
 				if(response.success == true){
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
-					alert("entre dos tierrastuestas");
+					//alert("entre dos tierrastuestas");
 					console.log(response.success);
 					
 				}else{
