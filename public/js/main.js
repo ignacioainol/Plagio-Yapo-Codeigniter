@@ -8,7 +8,8 @@
 	  data: {
 	  	formSee: true
 	  }
-	});	
+	});
+
 
 
 
@@ -204,6 +205,10 @@ $('document').ready(function(){
 				document.getElementById('btnPost').style.display = 'inline';
 				document.getElementById('gifload').style.display = 'none';
 				if(response.success == true){
+					app.formSee = false;
+					$('#messages').html('<div class="alert alert-success" role="alert">'+
+  											'<strong>Listo!</strong> Revisaremos tu anuncio y te informaremos cuando sea aceptado.'+
+										'</div>');
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
 					//alert("entre dos tierrastuestas");

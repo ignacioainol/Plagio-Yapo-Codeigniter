@@ -1,6 +1,7 @@
-<dic class="container mainWrapperForm">
+<dic class="container mainWrapperForm" id="mainRegistro">
 	<div class="container">
-		<form action="<?= base_url() ?>form/newpost" id="newpost" method="post">
+		<div id="messages"></div>
+		<form action="<?= base_url() ?>form/newpost" id="newpost" method="post" v-if="formSee">
 			<div class="row">
 				<div class="col-xl-6 col-md-12 col-lg-12">
 					<? if($this->session->userdata('logged_in')): ?>
@@ -163,6 +164,7 @@
 			</div>
 			<div class="row">
 			<div class="col-md-12">
+			  <? if(!$this->session->userdata('logged_in')): ?>
 			  <!--[TERMINOS Y CONDICIONES]-->
 			  <div class="form-group" style="text-align: center">
 
@@ -171,6 +173,7 @@
 			    <label class="form-check-label">Estoy de acuerdo con los <a href="#" data-toggle="modal" data-target="#terminosCondiciones">Términos y Condiciones</a></label>
 			  </div>
 			  <!--[/TERMINOS Y CONDICIONES]-->
+			  <? endif ?>
 			
 			  <div class="text-center">
 			  	<button type="submit" id="btnPost" class="btn btn-success">Publicar</button><br>
