@@ -1,6 +1,7 @@
-//var pathname = window.location.pathname;
+// var pathname = window.location.pathname;
 
-//if(pathname == '/yapues/registro'){
+// if(pathname == '/yapues/registro'){
+// }
 	const app = new Vue({
  
 	  el: '#mainRegistro',
@@ -8,7 +9,7 @@
 	  	formSee: true
 	  }
 	});	
-//}
+
 
 
 $('document').ready(function(){
@@ -199,8 +200,8 @@ $('document').ready(function(){
 				if(response.success == true){
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
-
-					console.log(response);
+					alert("entre dos tierrastuestas");
+					console.log(response.success);
 					
 				}else{
 					if(response.messages instanceof Object){

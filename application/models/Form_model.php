@@ -6,15 +6,17 @@ class Form_model extends CI_Model{
 		parent::__construct();
 	}
 
-	public function createNewPost(){
-		$category_id = $this->input->post('selectCategory');
-		$title    	 = $this->input->post('titlePost');
-		$id_user 	 = $this->input->post('id_user');
+	public function createNewPost($id_user,$category_id,$title,$post_description,$post_price,$post_id_region,$post_id_town){
+		
 
 		$data = array(
-			'id_user' 	    => $this->input->post('id_user'),
-			'post_category' => $this->input->post('selectCategory'),
-			'post_title'    => $this->input->post('titlePost'),
+			'user_id' 	       => $id_user,
+			'post_category'    => $category_id,
+			'post_title'       => $title,
+			'post_description' => $post_description,
+			'post_price'	   => $post_price,
+			'post_id_region'   => $post_id_region,
+			'post_id_town'	   => $post_id_town
 		);
 
 		if($this->db->insert('posts',$data)){

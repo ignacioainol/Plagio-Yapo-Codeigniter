@@ -16,7 +16,7 @@ class Register_model extends CI_Model{
 			'sex' 	    => $this->input->post('sexo'),
 			'region_id' => $this->input->post('selectRegion'),
 			'town_id'   => $this->input->post('selectTown'),
-			'phone' 	=> $this->input->post('numberPhone'),
+			'phone' 	=> '+569 ' . $this->input->post('numberPhone'),
 			'email'		=> $this->input->post('email'),
 			'salt' 		=> $salt,
 			'hash' 		=> $hash,
