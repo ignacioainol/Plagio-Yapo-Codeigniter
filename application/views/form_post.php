@@ -1,3 +1,4 @@
+
 <dic class="container mainWrapperForm" id="mainRegistro">
 	<div class="container">
 		<div id="messages"></div>
@@ -174,6 +175,22 @@
 			  </div>
 			  <!--[/TERMINOS Y CONDICIONES]-->
 			  <? endif ?>
+
+			  <div class="col-md-12">
+				<div class="container">
+					<div class="form">
+						<form>
+						  <div class="form-group">
+<!-- 						    <label for="exampleFormControlFile1">Example file input</label>
+						    <input type="file" enctype='multipart/form-data' class="form-control-file" id="gallery-photo-add" multiple> -->
+						    <div class="field" align="left">
+							  <input type="file" id="files" name="files[]" multiple  accept="image/*" />
+							</div>
+						  </div>
+						</form>
+					</div>
+				</div>
+			</div>
 			
 			  <div class="text-center">
 			  	<button type="submit" id="btnPost" class="btn btn-success">Publicar</button><br>

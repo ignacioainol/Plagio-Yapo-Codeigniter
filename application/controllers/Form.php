@@ -155,7 +155,7 @@ class Form extends CI_Controller{
 			//Form Post Ok
 
 			$validator['success'] = true;
-			//$validator['id_user'] = $this->input->post('id_user');
+			$validator['id_user'] = $this->input->post('id_user');
 
 			$id_user         = $this->input->post('id_user');
 			$category_id     = $this->input->post('selectCategory');
@@ -164,8 +164,14 @@ class Form extends CI_Controller{
 			$pricePost		 = $this->input->post('pricePost');
 			$post_id_region  = $this->input->post('selectRegion');
 			$post_id_town    = $this->input->post('selectTown');
+			//$images 	     = $this->input->post('files');
 
-			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+			// foreach ($images as $key => $image) {
+			// 	$validator['name_img'] = $image['name'];
+			// }
+
+
+			//$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 		}
 
