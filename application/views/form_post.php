@@ -184,7 +184,7 @@
 <!-- 						    <label for="exampleFormControlFile1">Example file input</label>
 						    <input type="file" enctype='multipart/form-data' class="form-control-file" id="gallery-photo-add" multiple> -->
 						    <div class="field" align="left">
-							  <input type="file" id="files" name="files[]" multiple  accept="image/*" />
+							  <input type="file" id="file_input" name="files[]" multiple  accept="image/*" />
 							</div>
 						  </div>
 						</form>

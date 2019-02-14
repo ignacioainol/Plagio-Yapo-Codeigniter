@@ -164,18 +164,44 @@ class Form extends CI_Controller{
 			$pricePost		 = $this->input->post('pricePost');
 			$post_id_region  = $this->input->post('selectRegion');
 			$post_id_town    = $this->input->post('selectTown');
-			//$images 	     = $this->input->post('files');
+			
+			// $config['upload_path'] = './public/img/post_images/';
+			// $config['allowed_types'] = 'jpg|jpeg|gif|png';
+			// $this->load->library('upload',$config);
 
-			// foreach ($images as $key => $image) {
-			// 	$validator['name_img'] = $image['name'];
-			// }
+			$F = array();
 
+			$count_files = count( $_FILES['images']['name'] );
+
+			$files = $_FILES;
+
+			for($i = 0; $i < $count_files; $i++){
+				$_FILES['userfile'] = [
+					'name'     => $files['images']['name'][$i],
+		            'type'     => $files['images']['type'][$i],
+		            'tmp_name' => $files['images']['tmp_name'][$i],
+		            'error'    => $files['images']['error'][$i],
+		            'size'     => $files['images']['size'][$i]
+				];
+
+				$upload_dir = 'public/img/post_images/';
+				$name = $files['images']['name'][$i];
+				move_uploaded_file($files['images']['tmp_name'][$i], $upload_dir.$name);
+
+				$F[] = $_FILES['userfile'];
+			}
+
+			$validator['images'] = $F;
 
 			//$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 		}
 
 		echo json_encode($validator);
+	}
+
+	public function phpinfo(){
+		phpinfo();
 	}
 
 	public function check_category($category) {
@@ -195,6 +221,7 @@ class Form extends CI_Controller{
 			return true;
 		}
 	}
+
 
 	public function check_town($town) {
 		if($town == 'xxx'){

@@ -192,11 +192,36 @@ $('document').ready(function(){
 	$('#newpost').unbind('submit').bind('submit',function(){
 		var form = $(this);
 
+		var categoryId = $('#selectCategory option:selected').val();
+		var title = $('#titlePost').val();
+		var descripcion = $('#descriptionPost').val();
+		var precio = $('#pricePost').val();
+		var region = $('#selectRegion option:selected').val();
+		var comuna = $('#selectTown option:selected').val();
+
+
+		var data = new FormData();
+		data.append('selectCategory',categoryId);
+		data.append('titlePost',title);
+		data.append('descriptionPost',descripcion);
+		data.append('pricePost',precio);
+		data.append('selectRegion',region);
+		data.append('selectTown',comuna);
+
+		var fileInput = $('#file_input')[0];
+
+
+		$.each(fileInput.files, function(k,file){
+                data.append('images[]', file);
+            });
+
 		$.ajax({
 			url: form.attr('action'),
 			type: form.attr('method'),
-			data: form.serialize(),
+			data: data,//form.serialize(),
 			dataType: 'json',
+			contentType: false,
+            processData: false,
 			beforeSend:function(){
 				document.getElementById('btnPost').style.display = 'none';
 				document.getElementById('gifload').style.display = 'inline';
@@ -212,7 +237,7 @@ $('document').ready(function(){
 					$('.alert-warning').remove();
 					$('.form-group').removeClass('alert-warning').removeClass('has-success');
 					//alert("entre dos tierrastuestas");
-					console.log(response.success);
+					console.log(response);
 					
 				}else{
 					if(response.messages instanceof Object){
@@ -301,7 +326,7 @@ function validateEmail(mail) {
 
 
   if (window.File && window.FileList && window.FileReader) {
-    $("#files").on("change", function(e) {
+    $("#file_input").on("change", function(e) {
       var files = e.target.files,
         filesLength = files.length;
       for (var i = 0; i < filesLength; i++) {
@@ -312,18 +337,10 @@ function validateEmail(mail) {
           $("<span class=\"pip\">" +
             "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
             "<br/><span class=\"remove\"><i class=\"fas fa-times\"></i></span>" +
-            "</span>").insertAfter("#files");
+            "</span>").insertAfter("#file_input");
           $(".remove").click(function(){
             $(this).parent(".pip").remove();
           });
-          
-          // Old code here
-          /*$("<img></img>", {
-            class: "imageThumb",
-            src: e.target.result,
-            title: file.name + " | Click to remove"
-          }).insertAfter("#files").click(function(){$(this).remove();});*/
-          
         });
         fileReader.readAsDataURL(f);
       }
