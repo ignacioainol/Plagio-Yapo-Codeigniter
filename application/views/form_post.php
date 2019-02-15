@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-xl-6 col-md-12 col-lg-12">
 					<? if($this->session->userdata('logged_in')): ?>
-						<input type="hidden" value="<?= $id_user ?>" name="id_user">
+						<input type="hidden" value="<?= $id_user ?>" id="id_user" name="id_user">
 					<? endif ?>
 					<h4>Publica tu aviso!</h4>
 					<p>Tu aviso será revisado por nuestro equipo y será publicado si cumple con las reglas de Yapues.cl</p>

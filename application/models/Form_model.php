@@ -26,6 +26,21 @@ class Form_model extends CI_Model{
 		}
 	}
 
+	public function saveImage($nameImg){
+
+		$data = array(
+			'image_name' => $nameImg,
+			'post_id' => 12
+		);
+
+		if($this->db->insert('images',$data)){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+
 
 }
 

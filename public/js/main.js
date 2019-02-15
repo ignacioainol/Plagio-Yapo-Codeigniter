@@ -190,15 +190,17 @@ $('document').ready(function(){
 	$('#newpost').unbind('submit').bind('submit',function(){
 		var form = $(this);
 
-		var categoryId = $('#selectCategory option:selected').val();
-		var title = $('#titlePost').val();
+		var id_user     = $('#id_user').val();
+		var categoryId  = $('#selectCategory option:selected').val();
+		var title 		= $('#titlePost').val();
 		var descripcion = $('#descriptionPost').val();
-		var precio = $('#pricePost').val();
-		var region = $('#selectRegion option:selected').val();
-		var comuna = $('#selectTown option:selected').val();
+		var precio 		= $('#pricePost').val();
+		var region 		= $('#selectRegion option:selected').val();
+		var comuna 		= $('#selectTown option:selected').val();
 
 
 		var data = new FormData();
+		data.append('id_user',id_user);
 		data.append('selectCategory',categoryId);
 		data.append('titlePost',title);
 		data.append('descriptionPost',descripcion);

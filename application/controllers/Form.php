@@ -191,12 +191,14 @@ class Form extends CI_Controller{
 				$name = $rand.'_'.time().'.'.$image_ext;
 				move_uploaded_file($files['images']['tmp_name'][$i], $upload_dir.$name);
 
+				$this->Form_model->saveImage($name);
+
 				$F[] = $_FILES['userfile'];
 			}
 
 			$validator['images'] = $F;
 
-			// $this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 		}
 
