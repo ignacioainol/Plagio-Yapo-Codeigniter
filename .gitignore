@@ -2,7 +2,7 @@
 
 application/cache/*
 !application/cache/index.html
-
+public/img/post_images/
 application/logs/*
 !application/logs/index.html
 
