@@ -185,7 +185,10 @@ class Form extends CI_Controller{
 				];
 
 				$upload_dir = 'public/img/post_images/';
-				$name = $files['images']['name'][$i];
+				$image = $files['images']['name'][$i];
+				$image_ext = pathinfo($image,PATHINFO_EXTENSION);
+				$rand = $this->genRandomString();
+				$name = $rand.'_'.time().'.'.$image_ext;
 				move_uploaded_file($files['images']['tmp_name'][$i], $upload_dir.$name);
 
 				$F[] = $_FILES['userfile'];
@@ -193,11 +196,26 @@ class Form extends CI_Controller{
 
 			$validator['images'] = $F;
 
-			//$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+			// $this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 		}
 
 		echo json_encode($validator);
+	}
+
+	public function genRandomString() {
+	    $length = 8;
+	    $characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWZYZ";
+
+	    $real_string_length = strlen($characters) ;     
+	    $string="image_yapues";
+
+	    for ($p = 0; $p < $length; $p++) 
+	    {
+	        $string .= $characters[mt_rand(0, $real_string_length-1)];
+	    }
+
+	    return strtolower($string);
 	}
 
 	public function phpinfo(){

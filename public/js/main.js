@@ -1,17 +1,15 @@
 // var pathname = window.location.pathname;
 
 // if(pathname == '/yapues/registro'){
+	
 // }
-	const app = new Vue({
- 
-	  el: '#mainRegistro',
-	  data: {
-	  	formSee: true
-	  }
-	});
 
-
-
+var app = new Vue({
+  el: '#mainRegistro',
+  data: {
+  	formSee: true
+  }
+});
 
 $('document').ready(function(){
 	$('#selectRegion').on('change',function(){
