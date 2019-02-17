@@ -164,10 +164,11 @@ class Form extends CI_Controller{
 			$pricePost		 = $this->input->post('pricePost');
 			$post_id_region  = $this->input->post('selectRegion');
 			$post_id_town    = $this->input->post('selectTown');
-			
-			// $config['upload_path'] = './public/img/post_images/';
-			// $config['allowed_types'] = 'jpg|jpeg|gif|png';
-			// $this->load->library('upload',$config);
+
+			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+
+			$query = $this->db->query("select post_id from posts order by post_id desc limit 1");
+			$lastPostId = $query->result()[0]->post_id;
 
 			$F = array();
 
@@ -191,14 +192,14 @@ class Form extends CI_Controller{
 				$name = $rand.'_'.time().'.'.$image_ext;
 				move_uploaded_file($files['images']['tmp_name'][$i], $upload_dir.$name);
 
-				$this->Form_model->saveImage($name);
+				$this->Form_model->saveImage($name,$lastPostId);
 
 				$F[] = $_FILES['userfile'];
 			}
 
 			$validator['images'] = $F;
 
-			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+			// $this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 		}
 
