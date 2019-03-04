@@ -20,6 +20,7 @@ $('document').ready(function(){
 		});
 		$('#selectTown').empty();
 		$('#selectTown').append('<option selected="selected" value="xxx">Seleccione Comuna</option>');
+		//$('#selectTown').multiselect();
 	});	
 
 	$('input[type=radio][name=typePhone]').on('change',function(){
@@ -272,6 +273,8 @@ $('document').ready(function(){
 
 		return false;
 	});
+
+	//$('#selectTown').multiselect();
 
 	$('#logout').unbind('submit').bind('submit',function(){
 		var form = $(this);

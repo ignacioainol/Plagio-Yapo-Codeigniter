@@ -9,7 +9,8 @@
 	<link rel="stylesheet" href="<?= base_url() ?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-	<link rel="stylesheet" href="<?= base_url()  ?>public/css/main.css">
+	<link rel="stylesheet" href="<?= base_url() ?>public/css/bootstrap-multiselect.css">
+	<link rel="stylesheet" href="<?= base_url() ?>public/css/main.css">
 </head>
 <body>
 <div class="container-fluid" id="mainContainer">

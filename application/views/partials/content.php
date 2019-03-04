@@ -24,8 +24,8 @@
 			  <div class="form-group">
 			  	<!--[COMUNAS]-->
 			  	<select id="selectTown" name="selectTown" class="form-control">
-			      	<option selected="selected" value="xxx">Seleccione Comuna</option>
-			    </select>
+		      		<option selected="selected" value="xxx">Seleccione Comuna</option>
+		      	</select>
 				<!--[/COMUNAS]-->
 			  </div>
 			  
