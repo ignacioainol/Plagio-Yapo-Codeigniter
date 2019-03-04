@@ -22,7 +22,7 @@
 				  <tbody>
 				  	<? foreach($regions as $key => $val): ?>
 				    <tr>
-				      <td><?= $val->region_name ."<br>" ?></td>
+				      <td><a href="<?= base_url() . $val->region_slug_name ?>"><?= $val->region_name ?></a></td>
 				    </tr>
 				    <? endforeach ?>
 				  </tbody>

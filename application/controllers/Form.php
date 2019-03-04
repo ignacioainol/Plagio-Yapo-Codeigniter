@@ -169,7 +169,6 @@ class Form extends CI_Controller{
 			$post_id_region  = $this->input->post('selectRegion');
 			$post_id_town    = $this->input->post('selectTown');
 
-			// $this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 			$query = $this->db->query("select post_id from posts order by post_id desc limit 1");
 			$lastPostId = $query->result()[0]->post_id;
@@ -205,6 +204,15 @@ class Form extends CI_Controller{
 
 			//creo que error in below
 			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+
+			$this->load->library('email');
+			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');
+			$this->email->to($this->session->userdata('email'));
+			$this->email->subject('Tu Publicacion sera revisada');
+			$data['name'] = $this->session->userdata('name');
+			$bodyMessage = $this->load->view('templates/post_in_revission',$data,true);
+			$this->email->message($bodyMessage);
+			$this->email->send();
 
 		}
 
