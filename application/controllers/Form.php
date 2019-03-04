@@ -32,11 +32,13 @@ class Form extends CI_Controller{
 	}
 
 	public function newPost(){
+		$emailOfPost = "";
 		$validator = array(
 			'success' => false,
 			'messages' => array()
 		);
 		if($this->session->userdata('logged_in')){
+			$emailOfPost = $this->session->userdata('email');
 			$validate_data = array(
 				array(
 					'field' => 'selectCategory',
@@ -73,6 +75,8 @@ class Form extends CI_Controller{
 				)
 			);
 		}else{
+
+			//$emailOfPost = $this->
 			$validate_data = array(
 				array(
 					'field' => 'selectCategory',
@@ -165,7 +169,7 @@ class Form extends CI_Controller{
 			$post_id_region  = $this->input->post('selectRegion');
 			$post_id_town    = $this->input->post('selectTown');
 
-			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+			// $this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 			$query = $this->db->query("select post_id from posts order by post_id desc limit 1");
 			$lastPostId = $query->result()[0]->post_id;
@@ -199,7 +203,8 @@ class Form extends CI_Controller{
 
 			$validator['images'] = $F;
 
-			// $this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+			//creo que error in below
+			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 		}
 
