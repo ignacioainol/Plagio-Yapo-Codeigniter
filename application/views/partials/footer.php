@@ -62,9 +62,7 @@
 	<script src="<?= base_url() ?>public/js/vue.js"></script>
 	<script src="https://unpkg.com/popper.js"></script>
 	<script src="<?= base_url() ?>public/js/bootstrap.min.js"></script>
-	<!-- <script src="<?= base_url() ?>public/js/mainVue.js"></script> -->
 	<script src="<?= base_url() ?>public/js/bootstrap-multiselect.js"></script>
 	<script src="<?= base_url() ?>public/js/main.js"></script>
-	<!-- <script src="<?= base_url() ?>public/js/sweet-modal-vue/dist/sweet-modal.js"></script> -->
 </body>
 </html>
