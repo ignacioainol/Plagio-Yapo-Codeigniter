@@ -1,9 +1,3 @@
-// var pathname = window.location.pathname;
-
-// if(pathname == '/yapues/registro'){
-	
-// }
-
 var app = new Vue({
   el: '#mainRegistro',
   data: {
@@ -12,6 +6,13 @@ var app = new Vue({
 });
 
 $('document').ready(function(){
+	var base_url = $('#urlbase').val();
+
+	filter_data(1);
+
+	$('.comunas_contant').html('<div id="loading" style="" ></div>');
+
+
 	$('#selectRegion').on('change',function(){
 		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
@@ -22,6 +23,21 @@ $('document').ready(function(){
 		$('#selectTown').append('<option selected="selected" value="xxx">Seleccione Comuna</option>');
 		//$('#selectTown').multiselect('refresh');
 	});
+
+	var category = "";
+	var currentUrl = window.location.href;
+
+	if(currentUrl.includes('atacama')){
+		category = 'atacama';
+		filter_data(1);
+	}
+
+	function filter_data(page){
+		var urlToAjax = base_url + '/'+ category + '/fetch_data/'+page;
+		// $.ajax({
+
+		// });
+	}
 
 	$('#selectTown').multiselect({
 			maxHeight: 200,

@@ -58,6 +58,18 @@
 	<!--[/CERRAR SESION]-->
 	<? endif ?>
 
+	<style>
+		#loading{
+		  text-align:center !important; 
+		  background: url('<?= base_url() ?>public/img/loader.svg') no-repeat center;
+		  width: 150px;
+		  height: 150px;
+		  margin: auto;
+
+		}
+		</style>
+	</style>
+
 	<script src="<?= base_url() ?>public/js/jquery.js"></script>
 	<script src="<?= base_url() ?>public/js/vue.js"></script>
 	<script src="https://unpkg.com/popper.js"></script>

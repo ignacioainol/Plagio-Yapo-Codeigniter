@@ -12,3 +12,4 @@
 	<link rel="stylesheet" href="<?= base_url()  ?>public/css/main.css">
 </head>
 <body>
+	<input type="hidden" value="<?= base_url() ?>" id="urlbase">

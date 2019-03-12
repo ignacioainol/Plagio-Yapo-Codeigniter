@@ -23,9 +23,12 @@
 
 			  <div class="form-group">
 			  	<!--[COMUNAS]-->
-			  	<select id="selectTown" name="selectTown" multiple="multiple" class="form-control">
-		      		<option selected="selected" value="xxx">Seleccione Comuna</option>
-		      	</select>
+			  	<div class="sidebar-contant comunas_contant">
+                	<!-- <ul class="list-group">
+	                    <li class="list-group-item"><input type="checkbox" class="common_selector brand" value="1"> &nbsp;&nbsp; Apple</li>
+	                    <li class="list-group-item"><input type="checkbox" class="common_selector brand" value="3"> &nbsp;&nbsp; Motorola</li>
+					</ul> -->
+              </div>
 				<!--[/COMUNAS]-->
 			  </div>
 			  
