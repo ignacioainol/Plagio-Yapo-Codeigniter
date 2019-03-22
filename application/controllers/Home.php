@@ -19,4 +19,8 @@ class Home extends CI_Controller {
 		$this->load->view('home', $data);
 		$this->load->view('partials/footer');
 	}
+
+	public function phpinfo(){
+		echo phpinfo();
+	}
 }

@@ -20,24 +20,26 @@
 				      </select>
 				<!--[/REGIONES]-->
 			  </div>
-
-			  <div class="form-group">
-			  	<!--[COMUNAS]-->
-			  	<div class="sidebar-contant comunas_contant">
-                	<!-- <ul class="list-group">
-	                    <li class="list-group-item"><input type="checkbox" class="common_selector brand" value="1"> &nbsp;&nbsp; Apple</li>
-	                    <li class="list-group-item"><input type="checkbox" class="common_selector brand" value="3"> &nbsp;&nbsp; Motorola</li>
-					</ul> -->
-              </div>
-				<!--[/COMUNAS]-->
-			  </div>
 			  
-			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="submit" class="btn btn-primary">Buscar</button>
 			</form>
 		</div>
 
 		<div class="col-md-9">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam est itaque dicta temporibus impedit voluptate consequatur laboriosam sequi, aspernatur dolorum laborum, molestias atque laudantium nobis asperiores deserunt. Vero esse, sequi!
+			<? foreach($posts as $key => $post): ?>
+				<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+		        <div class="col p-4 d-flex flex-column position-static">
+		          <strong class="d-inline-block mb-1 text-primary">World</strong>
+		          <h3 class="mb-0"><?= $post->post_title ?></h3>
+		          <div class="mb-1 text-muted">Nov 12</div>
+		          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+		          <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+		        </div>
+		        <div class="col-auto d-none d-lg-block">
+		          <img style="width: 200px; height: 200px" class="img-fluid" src="<?= base_url() ?>public/img/post_images/<?= $post->image_name ?>" alt="">
+		        </div>
+		      </div>
+			<? endforeach ?>
 		</div>
 	</div>
 </div>

@@ -13,12 +13,21 @@ class Items_model extends CI_Model
 		$query .= ' LIMIT '.$start.', ' . $limit;
 	}
 
-	public function make_query_servicios(){
+	public function getPosts($idRegion){
+
 		$query = "
-			SELECT DISTINCT t1.post_title,t1.post_description
+			SELECT DISTINCT t1.post_id,t1.post_title,t1.post_description,t2.image_name
 			FROM posts t1
+			LEFT JOIN images t2 ON t2.post_id = t1.post_id
 		";
 
-		return $query;
+		if(isset($idRegion)){
+			$query .= " WHERE t1.post_id_region = {$idRegion}";
+		}
+
+		$result = $this->db->query($query);
+
+
+		return $result->result();
 	}
 }
