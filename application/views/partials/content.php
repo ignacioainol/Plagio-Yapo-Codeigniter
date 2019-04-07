@@ -29,9 +29,9 @@
 			<? foreach($posts as $key => $post): ?>
 				<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 		        <div class="col p-4 d-flex flex-column position-static">
-		          <strong class="d-inline-block mb-1 text-primary">World</strong>
+		          <strong class="d-inline-block mb-1 text-primary"><?= $post->category_name ?></strong>
 		          <h3 class="mb-0"><?= $post->post_title ?></h3>
-		          <div class="mb-1 text-muted">Nov 12</div>
+		          <div class="mb-1 text-muted"><?= $post->fecha ?></div>
 		          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
 		          <!-- <a href="#" class="stretched-link">Continue reading</a> -->
 		        </div>
