@@ -16,7 +16,7 @@ $('document').ready(function(){
 	$('#selectRegion').on('change',function(){
 		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
-				$('#selectTown').multiselect('rebuild');
+				//$('#selectTown').multiselect('rebuild');
 				$('#selectTown').append('<option value='+value.town_id+'>'+value.town_name+'</option>');
 			});
 		});
@@ -39,15 +39,15 @@ $('document').ready(function(){
 		// });
 	}
 
-	$('#selectTown').multiselect({
-			maxHeight: 200,
-			width: 400,
-			includeSelectAllOption: true,
-			dropRight: true,
-			templates:{
-				li: '<li class="checkList"><a tabindex="0"><div class="aweCheckbox aweCheckbox-danger"><label for=""></label></div></a></li>'
-			}
-	});
+	// $('#selectTown').multiselect({
+	// 		maxHeight: 200,
+	// 		width: 400,
+	// 		includeSelectAllOption: true,
+	// 		dropRight: true,
+	// 		templates:{
+	// 			li: '<li class="checkList"><a tabindex="0"><div class="aweCheckbox aweCheckbox-danger"><label for=""></label></div></a></li>'
+	// 		}
+	// });
 
 	$('input[type=radio][name=typePhone]').on('change',function(){
 		if(this.value == 'movil'){

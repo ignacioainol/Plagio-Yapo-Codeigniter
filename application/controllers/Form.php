@@ -170,6 +170,9 @@ class Form extends CI_Controller{
 			$post_id_town    = $this->input->post('selectTown');
 
 
+			//creo que error in below
+			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
+
 			$query = $this->db->query("select post_id from posts order by post_id desc limit 1");
 			$lastPostId = $query->result()[0]->post_id;
 
@@ -201,9 +204,6 @@ class Form extends CI_Controller{
 			}
 
 			$validator['images'] = $F;
-
-			//creo que error in below
-			$this->Form_model->createNewPost($id_user,$category_id,$titlePost,$postDescription,$pricePost, $post_id_region,$post_id_town);
 
 			$this->load->library('email');
 			$this->email->from('ignacio.ainolrivera@gmail.com', 'Ya Pues! Compra y Vende lo que sea');

@@ -25,6 +25,8 @@ class Items_model extends CI_Model
 			$query .= " WHERE t1.post_id_region = {$idRegion}";
 		}
 
+		$query .= " GROUP BY t1.post_id";
+
 		$result = $this->db->query($query);
 
 
