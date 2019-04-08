@@ -6,7 +6,6 @@ class Items_model extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
-		setlocale(LC_ALL, 'es_ES');
 	}
 
 	public function count_all_atacama($limit, $start){
@@ -16,7 +15,7 @@ class Items_model extends CI_Model
 
 	public function getPosts($idRegion){
 
-		setlocale(LC_TIME, "spanish");
+		$queryOne = "SET lc_time_names = 'es_ES'";
 
 		$query = "
 			SELECT DISTINCT 
@@ -28,7 +27,7 @@ class Items_model extends CI_Model
 					WHEN
 						DATE(t1.post_create_at) = SUBDATE(CURRENT_DATE(), INTERVAL 1 DAY) THEN CONCAT('Ayer a las ', DATE_FORMAT(t1.post_create_at,'%H:%i'))
 					ELSE
-						CONCAT(DATE_FORMAT(t1.post_create_at,'%d %M'))
+						CONCAT(DATE_FORMAT(t1.post_create_at,'%d de %M'))
 				END AS fecha,
 				t2.image_name,
 				t3.category_name
@@ -44,7 +43,7 @@ class Items_model extends CI_Model
 		$query .= " GROUP BY t1.post_id
 					ORDER BY t1.post_create_at DESC";
 
-
+		$this->db->query($queryOne);
 		$result = $this->db->query($query);
 
 
