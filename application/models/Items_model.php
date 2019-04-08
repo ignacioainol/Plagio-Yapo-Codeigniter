@@ -6,6 +6,7 @@ class Items_model extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		setlocale(LC_ALL, 'es_ES');
 	}
 
 	public function count_all_atacama($limit, $start){
@@ -15,6 +16,8 @@ class Items_model extends CI_Model
 
 	public function getPosts($idRegion){
 
+		setlocale(LC_TIME, "spanish");
+
 		$query = "
 			SELECT DISTINCT 
 				t1.post_id,
@@ -22,6 +25,10 @@ class Items_model extends CI_Model
 				CASE 
 					WHEN
 						DATE_FORMAT(t1.post_create_at,'%M %d') = DATE_FORMAT(NOW(), '%M %d') THEN CONCAT('Hoy a las ', DATE_FORMAT(t1.post_create_at,'%H:%i'))
+					WHEN
+						DATE(t1.post_create_at) = SUBDATE(CURRENT_DATE(), INTERVAL 1 DAY) THEN CONCAT('Ayer a las ', DATE_FORMAT(t1.post_create_at,'%H:%i'))
+					ELSE
+						CONCAT(DATE_FORMAT(t1.post_create_at,'%d %M'))
 				END AS fecha,
 				t2.image_name,
 				t3.category_name

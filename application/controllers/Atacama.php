@@ -6,6 +6,8 @@ class Atacama extends CI_Controller{
 		parent::__construct();
 		$this->load->model('Region_model');
 		$this->load->model('Items_model');
+
+		setlocale(LC_ALL, 'es_ES');
 	}
 
 	public function index(){
