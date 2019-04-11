@@ -30,10 +30,14 @@ class Items_model extends CI_Model
 						CONCAT(DATE_FORMAT(t1.post_create_at,'%d de %M'))
 				END AS fecha,
 				t2.image_name,
-				t3.category_name
+				t3.category_name,
+				t4.region_name,
+				t5.town_name
 			FROM posts t1
 			LEFT JOIN images t2 ON t2.post_id = t1.post_id
 			JOIN categories t3 ON t1.post_category = t3.category_id
+			JOIN regions t4 ON t1.post_id_region = t4.region_id
+			JOIN towns t5 ON t1.post_id_town = t5.town_id
 		";
 
 		if(isset($idRegion)){

@@ -29,11 +29,15 @@
 			<? foreach($posts as $key => $post): ?>
 				<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 		        <div class="col p-4 d-flex flex-column position-static">
-		          <strong class="d-inline-block mb-1 text-primary"><?= $post->category_name ?></strong>
-		          <h3 class="mb-0"><?= $post->post_title ?></h3>
-		          <div class="mb-1 text-muted"><?= $post->fecha ?></div>
-		          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-		          <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+		        	<div class="row">
+		        		<div class="col-md-8">
+		        			<strong class="d-inline-block mb-1 text-primary"><?= $post->category_name ?></strong>
+		        		</div>
+		        		<div class="col-md-4">
+		        			<span><?= $post->region_name ?></span>
+		        			<p><?= $post->town_name ?></p>
+		        		</div>
+		        	</div>
 		        </div>
 		        <div class="col-auto d-none d-lg-block">
 		          <img style="width: 200px; height: 200px" class="img-fluid" src="<?= base_url() ?>public/img/post_images/<?= $post->image_name ?>" alt="">
