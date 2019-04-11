@@ -39,7 +39,7 @@
 		        			<p><?= $post->town_name ?></p>
 		        		</div>
 		        	</div>
-
+					<h4 class="mb-0 mt-3"><?= $post->post_title ?></h4>
 		        </div>
 		        <div class="col-auto">
 		          <img style="width: 200px; height: 200px" class="img-fluid" src="<?= base_url() ?>public/img/post_images/<?= $post->image_name ?>" alt="">
