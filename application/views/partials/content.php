@@ -32,14 +32,16 @@
 		        	<div class="row">
 		        		<div class="col-md-8">
 		        			<strong class="d-inline-block mb-1 text-primary"><?= $post->category_name ?></strong>
+		        			<div class="mb-1 mt-2 text-muted"><?= $post->fecha ?></div>
 		        		</div>
 		        		<div class="col-md-4">
-		        			<span><?= $post->region_name ?></span>
+		        			<span><strong><?= $post->region_name ?></strong></span>
 		        			<p><?= $post->town_name ?></p>
 		        		</div>
 		        	</div>
+
 		        </div>
-		        <div class="col-auto d-none d-lg-block">
+		        <div class="col-auto">
 		          <img style="width: 200px; height: 200px" class="img-fluid" src="<?= base_url() ?>public/img/post_images/<?= $post->image_name ?>" alt="">
 		        </div>
 		      </div>
