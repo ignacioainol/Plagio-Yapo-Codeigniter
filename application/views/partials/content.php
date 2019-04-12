@@ -27,7 +27,7 @@
 
 		<div class="col-md-9">
 			<? foreach($posts as $key => $post): ?>
-				<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+				<div class="row no-gutters thisPost border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 		        <div class="col p-4 d-flex flex-column position-static">
 		        	<div class="row">
 		        		<div class="col-md-8">

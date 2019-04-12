@@ -133,6 +133,14 @@ $greenlight: #76ff03;
 		  color: black;
 		}
 }
+.thisPost{
+	transition: all .4s linear;
+	cursor: pointer;
+}
+
+.thisPost:hover{
+	background: rgba(0,0,0,0.1);
+}
 
 .bodyDashboard{
 	margin-top: 4em;
