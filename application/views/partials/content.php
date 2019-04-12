@@ -12,13 +12,22 @@
 			  <div class="form-group">
 			  	<!--[REGIONES]-->
 			    <label for="exampleInputPassword1"><strong>Filtro de Región</strong></label>
-			    <select id="selectRegion" name="selectRegion" class="form-control" required="required">
+			    <select id="selectRegionSearch" name="selectRegionSearch" class="form-control" required="required">
 				      	<option selected="selected" value="xxx">Seleccione Región</option>
 				      	<? foreach($regions as $key => $val): ?>
 				        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
 				    	<? endforeach ?>
 				      </select>
 				<!--[/REGIONES]-->
+
+				<!--[COMUNAS]-->
+				<div class="form-check" id="selectTownSearch">
+				  <!-- <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+				  <label class="form-check-label" for="defaultCheck1">
+				    Default checkbox
+				  </label> -->
+				</div>
+				<!--[/COMUNAS]-->
 			  </div>
 			  
 			  <button type="submit" class="btn btn-primary">Buscar</button>

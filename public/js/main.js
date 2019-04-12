@@ -8,46 +8,25 @@ var app = new Vue({
 $('document').ready(function(){
 	var base_url = $('#urlbase').val();
 
-	filter_data(1);
-
-	$('.comunas_contant').html('<div id="loading" style="" ></div>');
-
 
 	$('#selectRegion').on('change',function(){
-		$.getJSON('http://localhost/yapues/registro/gettowns/'+ this.value,function(data){
+		$.getJSON(base_url +'registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
-				//$('#selectTown').multiselect('rebuild');
 				$('#selectTown').append('<option value='+value.town_id+'>'+value.town_name+'</option>');
 			});
 		});
+		$('#selectTown').empty();
 		$('#selectTown').append('<option selected="selected" value="xxx">Seleccione Comuna</option>');
-		//$('#selectTown').multiselect('refresh');
 	});
 
-	var category = "";
-	var currentUrl = window.location.href;
+	$('#selectRegionSearch').on('change',function(){
+		$.getJSON(base_url +'registro/gettowns/'+ this.value,function(data){
+			$.each(data,function(key,value){
+				$('#selectTownSearch').append('testing <br>');
+			});
+		});
+	});
 
-	if(currentUrl.includes('atacama')){
-		category = 'atacama';
-		filter_data(1);
-	}
-
-	function filter_data(page){
-		var urlToAjax = base_url + '/'+ category + '/fetch_data/'+page;
-		// $.ajax({
-
-		// });
-	}
-
-	// $('#selectTown').multiselect({
-	// 		maxHeight: 200,
-	// 		width: 400,
-	// 		includeSelectAllOption: true,
-	// 		dropRight: true,
-	// 		templates:{
-	// 			li: '<li class="checkList"><a tabindex="0"><div class="aweCheckbox aweCheckbox-danger"><label for=""></label></div></a></li>'
-	// 		}
-	// });
 
 	$('input[type=radio][name=typePhone]').on('change',function(){
 		if(this.value == 'movil'){
