@@ -138,6 +138,11 @@ $greenlight: #76ff03;
 	cursor: pointer;
 }
 
+#selectTownSearch{
+	max-height: 300px;
+	overflow-y: scroll;
+}
+
 .thisPost:hover{
 	background: rgba(0,0,0,0.1);
 }

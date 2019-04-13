@@ -20,9 +20,13 @@ $('document').ready(function(){
 	});
 
 	$('#selectRegionSearch').on('change',function(){
+		$('#selectTownSearch').empty();
+		$('#selectTownSearch').empty();
 		$.getJSON(base_url +'registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
-				$('#selectTownSearch').append('testing <br>');
+				$('#selectTownSearch')
+						.append('<input class="form-check-input" type="checkbox" value="'+value.town_id+'">'+
+					'<label class="form-check-label" for="defaultCheck1">'+value.town_name+'</label><br>');
 			});
 		});
 	});

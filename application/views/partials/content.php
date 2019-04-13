@@ -10,18 +10,35 @@
 			    <small class="form-text text-muted">Busque por palabras claves o texto completo</small>
 			  </div>
 			  <div class="form-group">
+				<!--[CATEGORIAS]-->
+			    <div class="form-group">
+						<label>Categoría</label>
+					    <select class="form-control" id="selectCategory" name="selectCategory">
+					    	<option value="xxx"> [[ Seleccione una categoría ]] </option>
+					    	<? foreach ($catParents as $key => $catParent): ?>
+					    		<option disabled value="<?= $catParent->type_cat_id ?>">[[ <?= $catParent->type_cat_name ?> ]]</option>
+					    		<? foreach($subCategories as $key => $subCat): ?>
+					    			<? if($subCat->type_cat_id == $catParent->type_cat_id): ?>
+					    			<option value="<?= $subCat->category_id ?>"> &nbsp;&nbsp;&nbsp;<?= $subCat->category_name ?></option>
+					    			<? endif ?>
+					    		<? endforeach ?>
+					    	<? endforeach ?>
+					    </select>
+					  </div>
+				<!--[/CATEGORIAS]-->
+
 			  	<!--[REGIONES]-->
-			    <label for="exampleInputPassword1"><strong>Filtro de Región</strong></label>
-			    <select id="selectRegionSearch" name="selectRegionSearch" class="form-control" required="required">
-				      	<option selected="selected" value="xxx">Seleccione Región</option>
-				      	<? foreach($regions as $key => $val): ?>
-				        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
-				    	<? endforeach ?>
-				      </select>
+			    <label><strong>Filtro de Región</strong></label>
+			    <select id="selectRegionSearch" name="selectRegionSearch" class="form-control">
+		      	<option selected="selected" value="xxx">Seleccione Región</option>
+		      	<? foreach($regions as $key => $val): ?>
+		        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
+		    	<? endforeach ?>
+		       </select>
 				<!--[/REGIONES]-->
 
 				<!--[COMUNAS]-->
-				<div class="form-check" id="selectTownSearch">
+				<div class="form-check mt-2" id="selectTownSearch">
 				  <!-- <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 				  <label class="form-check-label" for="defaultCheck1">
 				    Default checkbox
