@@ -3,7 +3,7 @@
 <div class="container" style="margin-top: 2em">
 	<div class="row">
 		<div class="col-md-3">
-			<form>
+			<form action="<?= base_url() ?>Search">
 			  <div class="form-group">
 			    <label><strong>Busca lo que necesites</strong></label>
 			    <input type="text" class="form-control" id="thingToFind" placeholder="Busqueda ...">
