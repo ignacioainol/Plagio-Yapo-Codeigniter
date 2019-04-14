@@ -3,10 +3,10 @@
 <div class="container" style="margin-top: 2em">
 	<div class="row">
 		<div class="col-md-3">
-			<form action="<?= base_url() ?>Search">
+			<form action="<?= base_url() ?>avisos" method="post">
 			  <div class="form-group">
 			    <label><strong>Busca lo que necesites</strong></label>
-			    <input type="text" class="form-control" id="thingToFind" placeholder="Busqueda ...">
+			    <input type="text" class="form-control" id="thingToFind" name="thingToFind" placeholder="Busqueda ...">
 			    <small class="form-text text-muted">Busque por palabras claves o texto completo</small>
 			  </div>
 			  <div class="form-group">
@@ -29,7 +29,7 @@
 
 			  	<!--[REGIONES]-->
 			    <label><strong>Filtro de Región</strong></label>
-			    <select id="selectRegionSearch" name="selectRegionSearch" class="form-control">
+			    <select id="selectRegionSearch" name="selectRegionSearch" name="selectRegionSearch" class="form-control">
 		      	<option selected="selected" value="xxx">Seleccione Región</option>
 		      	<? foreach($regions as $key => $val): ?>
 		        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
