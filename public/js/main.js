@@ -25,7 +25,7 @@ $('document').ready(function(){
 		$.getJSON(base_url +'registro/gettowns/'+ this.value,function(data){
 			$.each(data,function(key,value){
 				$('#selectTownSearch')
-						.append('<input class="form-check-input" name="checkTowns" type="checkbox" value="'+value.town_id+'">'+
+						.append('<input class="form-check-input" name="checkTowns[]" type="checkbox" value="'+value.town_id+'">'+
 					'<label class="form-check-label" for="defaultCheck1">'+value.town_name+'</label><br>');
 			});
 		});

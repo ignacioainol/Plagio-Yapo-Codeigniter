@@ -3,10 +3,10 @@
 <div class="container" style="margin-top: 2em">
 	<div class="row">
 		<div class="col-md-3">
-			<form action="<?= base_url() ?>avisos" method="post">
+			<form action="<?= base_url() ?>avisos" method="get">
 			  <div class="form-group">
 			    <label><strong>Busca lo que necesites</strong></label>
-			    <input type="text" class="form-control" id="thingToFind" name="thingToFind" placeholder="Busqueda ...">
+			    <input type="text" class="form-control" id="thingToFind" name="q" placeholder="Busqueda ...">
 			    <small class="form-text text-muted">Busque por palabras claves o texto completo</small>
 			  </div>
 			  <div class="form-group">
@@ -32,7 +32,7 @@
 			    <select id="selectRegionSearch" name="selectRegionSearch" name="selectRegionSearch" class="form-control">
 		      	<option selected="selected" value="xxx">Seleccione Región</option>
 		      	<? foreach($regions as $key => $val): ?>
-		        	<option value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
+		        	<option <? if($regionId == $val->region_id ){ echo "selected";} ?> value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
 		    	<? endforeach ?>
 		       </select>
 				<!--[/REGIONES]-->
