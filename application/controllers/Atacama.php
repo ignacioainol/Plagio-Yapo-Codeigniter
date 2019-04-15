@@ -27,10 +27,20 @@ class Atacama extends CI_Controller{
 	}
 
 	public function Avisos(){
+
 		$busqueda   = $this->input->get('q');
 		$categoryId = $this->input->get('cat');
 		$regionId 	= $this->input->get('reg');
 		$comunaIds  = $this->input->get('cmn'); 
+
+		$data['regionId'] = 5;
+		$data['name'] = $this->session->userdata('name');
+		$data['regionName'] = "atacama";
+		$data['posts'] = $this->Items_model->getSearchPosts($busqueda,$regionId);
+
+		$this->load->view('partials/main_header',$data);
+		$this->load->view('partials/content');
+		$this->load->view('partials/footer');
 
 	}
 

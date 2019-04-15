@@ -30,7 +30,7 @@
 
 			  	<!--[REGIONES]-->
 			    <label><strong>Filtro de Región</strong></label>
-			    <select id="selectRegionSearch" name="reg" name="selectRegionSearch" class="form-control">
+			    <select id="selectRegionSearch" name="reg" class="form-control">
 		      	<option selected="selected" value="xxx">Seleccione Región</option>
 		      	<? foreach($regions as $key => $val): ?>
 		        	<option <? if($regionId == $val->region_id ){ echo "selected";} ?> value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
