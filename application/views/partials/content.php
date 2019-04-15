@@ -14,8 +14,13 @@
 				<!--[CATEGORIAS]-->
 			    <div class="form-group">
 						<label>Categoría</label>
+						<label> session de categoria <?= $this->session->userdata('categoryId') ?></label>
 					    <select class="form-control" id="selectCategory" name="cat">
-					    	<option value="xxx"> [[ Seleccione una categoría ]] </option>
+					    	<? if($this->session->userdata('categoryId')): ?>
+					    		<option value="<?= $this->session->userdata('categoryId') ?>"> sesion ok </option>
+					    	<? else: ?>
+					    		<option value="xxx"> [[ Seleccione una categoría ]] </option>
+					    	<? endif ?>
 					    	<? foreach ($catParents as $key => $catParent): ?>
 					    		<option disabled value="<?= $catParent->type_cat_id ?>">[[ <?= $catParent->type_cat_name ?> ]]</option>
 					    		<? foreach($subCategories as $key => $subCat): ?>

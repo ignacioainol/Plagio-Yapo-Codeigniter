@@ -28,10 +28,18 @@ class Atacama extends CI_Controller{
 
 	public function Avisos(){
 
+		$this->load->library('session');
+
 		$busqueda   = $this->input->get('q');
 		$categoryId = $this->input->get('cat');
 		$regionId 	= $this->input->get('reg');
 		$comunaIds  = $this->input->get('cmn'); 
+
+		$newData = array(
+			'categoryId'   => $categoryId
+		);
+
+		$this->session->set_userdata($newData);
 
 		$data['regionId'] = 5;
 		$data['name'] = $this->session->userdata('name');
