@@ -11,7 +11,7 @@ class Biobio extends CI_Controller{
 	public function index(){
 		$data['regionId'] = 10;
 		$data['name'] = $this->session->userdata('name');
-		//$data['idRegion'] =
+		$data['regionName'] = "Biobio";
 		$data['regions'] = $this->Region_model->getRegions();
 		$data['posts'] = $this->Items_model->getPosts(10);
 

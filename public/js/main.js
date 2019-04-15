@@ -12,7 +12,7 @@ $('document').ready(function(){
 
 	$.getJSON(base_url+'registro/gettowns/'+ region_id,function(data){
 		$.each(data,function(key,value){
-			$('#selectTownSearch').append('<input class="form-check-input" name="checkTowns[]" type="checkbox">'+value.town_name+'<br>');
+			$('#selectTownSearch').append('<input class="form-check-input" name="cmn[]" type="checkbox" value="'+value.town_id+'">'+value.town_name+'<br>');
 		});
 	});
 

@@ -30,9 +30,8 @@ class Atacama extends CI_Controller{
 		$busqueda   = $this->input->get('q');
 		$categoryId = $this->input->get('cat');
 		$regionId 	= $this->input->get('reg');
-		echo "buscando texto: " . $busqueda ."<br>";
-		echo "category id: " .$categoryId ."<br>";
-		echo "region id: " . $regionId;
+		$comunaIds  = $this->input->get('cmn'); 
+
 	}
 
 }
