@@ -36,7 +36,7 @@ class Atacama extends CI_Controller{
 		$data['regionId'] = 5;
 		$data['name'] = $this->session->userdata('name');
 		$data['regionName'] = "atacama";
-		$data['posts'] = $this->Items_model->getSearchPosts($busqueda,$regionId,$comunaIds);
+		$data['posts'] = $this->Items_model->getSearchPosts($busqueda,$regionId,$comunaIds,$categoryId);
 
 		$this->load->view('partials/main_header',$data);
 		$this->load->view('partials/content');

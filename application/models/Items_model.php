@@ -54,7 +54,7 @@ class Items_model extends CI_Model
 		return $result->result();
 	}
 
-	public function getSearchPosts($busqueda,$regionId,$comunaIds){
+	public function getSearchPosts($busqueda,$regionId,$comunaIds,$categoryId){
 
 		$queryOne = "SET lc_time_names = 'es_ES'";
 
@@ -84,6 +84,12 @@ class Items_model extends CI_Model
 		if(isset($busqueda)){
 			$query .= "
 				AND t1.post_title LIKE '%{$busqueda}%'
+			";
+		}
+
+		if(isset($categoryId)){
+			$query .= "
+				AND t1.post_category = {$categoryId}
 			";
 		}
 
