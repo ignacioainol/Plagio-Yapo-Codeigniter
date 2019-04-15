@@ -7,6 +7,14 @@ var app = new Vue({
 
 $('document').ready(function(){
 	var base_url = $('#urlbase').val();
+	var region_id = $('#regionId').val();
+	console.log("region id " + region_id);
+
+	$.getJSON(base_url+'registro/gettowns/'+ region_id,function(data){
+		$.each(data,function(key,value){
+			$('#selectTownSearch').append('<input class="form-check-input" name="checkTowns[]" type="checkbox">'+value.town_name+'<br>');
+		});
+	});
 
 
 	$('#selectRegion').on('change',function(){

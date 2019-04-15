@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
 <div class="container" style="margin-top: 2em">
+	<input type="hidden" value="<?= $regionId ?>" id="regionId">
 	<div class="row">
 		<div class="col-md-3">
-			<form action="<?= base_url() ?>avisos" method="get">
+			<form action="<?= base_url() . $regionName ?>/avisos" method="get">
 			  <div class="form-group">
 			    <label><strong>Busca lo que necesites</strong></label>
 			    <input type="text" class="form-control" id="thingToFind" name="q" placeholder="Busqueda ...">
@@ -13,7 +14,7 @@
 				<!--[CATEGORIAS]-->
 			    <div class="form-group">
 						<label>Categoría</label>
-					    <select class="form-control" id="selectCategory" name="selectCategory">
+					    <select class="form-control" id="selectCategory" name="cat">
 					    	<option value="xxx"> [[ Seleccione una categoría ]] </option>
 					    	<? foreach ($catParents as $key => $catParent): ?>
 					    		<option disabled value="<?= $catParent->type_cat_id ?>">[[ <?= $catParent->type_cat_name ?> ]]</option>
@@ -29,7 +30,7 @@
 
 			  	<!--[REGIONES]-->
 			    <label><strong>Filtro de Región</strong></label>
-			    <select id="selectRegionSearch" name="selectRegionSearch" name="selectRegionSearch" class="form-control">
+			    <select id="selectRegionSearch" name="reg" name="selectRegionSearch" class="form-control">
 		      	<option selected="selected" value="xxx">Seleccione Región</option>
 		      	<? foreach($regions as $key => $val): ?>
 		        	<option <? if($regionId == $val->region_id ){ echo "selected";} ?> value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
@@ -38,11 +39,15 @@
 				<!--[/REGIONES]-->
 
 				<!--[COMUNAS]-->
-				<div class="form-check mt-2" id="selectTownSearch">
+				<div class="mt-3">
+					<label><strong>Filtro de Comunas</strong></label>
+
+					<div class="form-check" id="selectTownSearch">
 				  <!-- <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 				  <label class="form-check-label" for="defaultCheck1">
 				    Default checkbox
 				  </label> -->
+				</div>
 				</div>
 				<!--[/COMUNAS]-->
 			  </div>

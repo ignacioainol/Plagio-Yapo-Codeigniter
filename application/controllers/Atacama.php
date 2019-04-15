@@ -14,7 +14,7 @@ class Atacama extends CI_Controller{
 	public function index(){
 		$data['regionId'] = 5;
 		$data['name'] = $this->session->userdata('name');
-		//$data['idRegion'] =
+		$data['regionName'] = "atacama";
 		$data['regions'] = $this->Region_model->getRegions();
 		$data['posts'] = $this->Items_model->getPosts(5);
 		//$data['categories'] = $this->Category_model->getCategories();
@@ -24,6 +24,15 @@ class Atacama extends CI_Controller{
 		$this->load->view('partials/main_header',$data);
 		$this->load->view('partials/content');
 		$this->load->view('partials/footer');
+	}
+
+	public function Avisos(){
+		$busqueda   = $this->input->get('q');
+		$categoryId = $this->input->get('cat');
+		$regionId 	= $this->input->get('reg');
+		echo "buscando texto: " . $busqueda ."<br>";
+		echo "category id: " .$categoryId ."<br>";
+		echo "region id: " . $regionId;
 	}
 
 }
