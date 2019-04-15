@@ -54,7 +54,7 @@ class Items_model extends CI_Model
 		return $result->result();
 	}
 
-	public function getSearchPosts($busqueda,$regionId){
+	public function getSearchPosts($busqueda,$regionId,$comunaIds){
 
 		$queryOne = "SET lc_time_names = 'es_ES'";
 
@@ -85,6 +85,11 @@ class Items_model extends CI_Model
 			$query .= "
 				AND t1.post_title LIKE '%{$busqueda}%'
 			";
+		}
+
+		if(isset($comunaIds)){
+			$comuna_filter = implode("','", $comunaIds);
+			$query .= " AND t1.post_id_town IN('".$comuna_filter."')";
 		}
 
 		$query .= " GROUP BY t1.post_id
