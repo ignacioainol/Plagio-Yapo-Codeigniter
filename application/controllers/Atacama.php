@@ -22,7 +22,7 @@ class Atacama extends CI_Controller{
 		$data['subCategories'] = $this->Category_model->getSubCategories();
 
 		$this->load->view('partials/main_header',$data);
-		$this->load->view('partials/content');
+		$this->load->view('partials/content_default');
 		$this->load->view('partials/footer');
 	}
 
@@ -36,14 +36,18 @@ class Atacama extends CI_Controller{
 		$comunaIds  = $this->input->get('cmn'); 
 
 		$newData = array(
-			'categoryId'   => $categoryId
+			'categoryId'   => $categoryId,
+			'regionId'     => $regionId
 		);
 
 		$this->session->set_userdata($newData);
+		// $nameOfCategory = $this->Items_model->getNameCategory($this->session->userdata('categoryId'));
 
-		$data['regionId'] = 5;
 		$data['name'] = $this->session->userdata('name');
 		$data['regionName'] = "atacama";
+		$data['catParents']    = $this->Category_model->getCatParents();
+		$data['subCategories'] = $this->Category_model->getSubCategories();
+		$data['regions'] = $this->Region_model->getRegions();
 		$data['posts'] = $this->Items_model->getSearchPosts($busqueda,$regionId,$comunaIds,$categoryId);
 
 		$this->load->view('partials/main_header',$data);

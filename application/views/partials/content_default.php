@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
 <div class="container" style="margin-top: 2em">
-	<!-- <input type="hidden" value="<?= $regionId ?>" id="regionId"> -->
+	<input type="hidden" value="<?= $regionId ?>" id="regionId">
 	<div class="row">
 		<div class="col-md-3">
 			<form action="<?= base_url() . $regionName ?>/avisos" method="get">
@@ -13,17 +13,14 @@
 			  <div class="form-group">
 				<!--[CATEGORIAS]-->
 			    <div class="form-group">
-						<label><strong>Categoría</strong></label>
-						<label> session de categoria <?= $this->session->userdata('categoryId') ?></label>
+						<label>Categoría</label>
 					    <select class="form-control" id="selectCategory" name="cat">
 					    	<option value="xxx"> [[ Seleccione una categoría ]] </option>
 					    	<? foreach ($catParents as $key => $catParent): ?>
 					    		<option disabled value="<?= $catParent->type_cat_id ?>">[[ <?= $catParent->type_cat_name ?> ]]</option>
 					    		<? foreach($subCategories as $key => $subCat): ?>
 					    			<? if($subCat->type_cat_id == $catParent->type_cat_id): ?>
-					    			<option <? if($this->session->userdata('categoryId') == $subCat->category_id){
-					    						echo "selected";
-					    					} ?> value="<?= $subCat->category_id; ?>"> &nbsp;&nbsp;&nbsp;<?= $subCat->category_name ?></option>
+					    			<option value="<?= $subCat->category_id ?>"> &nbsp;&nbsp;&nbsp;<?= $subCat->category_name ?></option>
 					    			<? endif ?>
 					    		<? endforeach ?>
 					    	<? endforeach ?>
@@ -33,11 +30,10 @@
 
 			  	<!--[REGIONES]-->
 			    <label><strong>Filtro de Región</strong></label>
-			    <label>session de region <?= $this->session->userdata('regionId') ?></label>
 			    <select id="selectRegionSearch" name="reg" class="form-control">
-		      	<option value="xxx">Seleccione Región</option>
+		      	<option selected="selected" value="xxx">Seleccione Región</option>
 		      	<? foreach($regions as $key => $val): ?>
-		        	<option <? if($this->session->userdata('regionId') == $val->region_id ){ echo "selected";} ?> value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
+		        	<option <? if($regionId == $val->region_id ){ echo "selected";} ?> value="<?= $val->region_id ?>"><?= $val->region_name ."<br>" ?></option>
 		    	<? endforeach ?>
 		       </select>
 				<!--[/REGIONES]-->
