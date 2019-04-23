@@ -4,7 +4,7 @@
 	<input type="hidden" value="<?= $regionId ?>" id="regionId">
 	<div class="row">
 		<div class="col-md-3">
-			<form action="<?= base_url() . $regionName ?>/avisos" method="get">
+			<form action="<?= base_url() ?>checkregion" method="get">
 			  <div class="form-group">
 			    <label><strong>Busca lo que necesites</strong></label>
 			    <input type="text" class="form-control" id="thingToFind" name="q" placeholder="Busqueda ...">

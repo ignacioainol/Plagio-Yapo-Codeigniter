@@ -20,4 +20,8 @@ class Biobio extends CI_Controller{
 		$this->load->view('partials/footer');
 	}
 
+	public function Avisos(){
+		echo $this->input->get('q');
+	}
+
 }
