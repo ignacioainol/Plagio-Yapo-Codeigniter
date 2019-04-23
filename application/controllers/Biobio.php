@@ -21,7 +21,7 @@ class Biobio extends CI_Controller{
 	}
 
 	public function Avisos(){
-		echo $this->input->get('q');
+		echo "vamos bieeen";
 	}
 
 }
