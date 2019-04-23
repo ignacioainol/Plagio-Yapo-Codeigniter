@@ -18,8 +18,20 @@ class Checkregion extends CI_Controller{
 		}
 
 		$toFind = str_replace(' ','+', $textToFind);
-		if($regionId == 5){
-			redirect('atacama/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns );
+		if($regionId == 1){
+			redirect('region_metropolitana/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns );
+		}else if($regionId == 2){
+			redirect('arica_y_parinacota/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns );
+		}else if($regionId == 3){
+			redirect('tarapaca/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns);
+		}else if($regionId == 4){
+			redirect('antofagasta/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns);
+		}else if($regionId == 5){
+			redirect('atacama/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns);
+		}else if($regionId == 6){
+			redirect('coquimbo/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns);
+		}else if($regionId == 7){
+			redirect('valparaiso/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns);
 		}else if($regionId == 10){
 			redirect('biobio/avisos?q='.$toFind.'&cat='.$category.'&reg='.$regionId.$comns);
 		}
