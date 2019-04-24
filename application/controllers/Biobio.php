@@ -16,7 +16,7 @@ class Biobio extends CI_Controller{
 		$data['posts'] = $this->Items_model->getPosts(10);
 
 		$this->load->view('partials/main_header',$data);
-		$this->load->view('partials/content');
+		$this->load->view('partials/content_default');
 		$this->load->view('partials/footer');
 	}
 
